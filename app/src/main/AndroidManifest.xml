@@ -28,6 +28,11 @@
             android:name=".CrudActivities.AsignacionConsultarActivity"
             android:label="@string/title_activity_asignacion_consultar" >
         </activity>
+        <activity android:name=".PrivetClass.CicloMenuActivity" />
+        <activity android:name=".CrudActivities.CicloInsertarActivity" />
+        <activity android:name=".CrudActivities.CicloActualizarActivity" />
+        <activity android:name=".CrudActivities.CicloEliminarActivity" />
+        <activity android:name=".CrudActivities.CicloConsultarActivity"></activity>
     </application>
 
 </manifest>

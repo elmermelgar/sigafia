@@ -6,10 +6,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import work.tarea1.DataBaseHWork;
+import work.tarea1.PrivetClass.DataBaseHWork;
 import work.tarea1.PrivetClass.asignacion;
 import work.tarea1.R;
 
