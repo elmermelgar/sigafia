@@ -10,16 +10,16 @@ import android.util.Log;
 import work.tarea1.PrivetClass.asignacion;
 
 /**
- * Created by fhmen on 27/04/2016.ddsdfsdfsdfsdfsdfsdf
+ * Created by fhmen on 27/04/2016.
  */
 public class DataBaseHWork {
 
 
     //se crean los campos que seran las columnas de nuestra base,solo sirven para hacacer referencia
     private static final String[] camposAsignacion = new String[]
-            {"cod_asignacion",
-                    "actividadId",
-                    "idLocal"};
+            {"ID_local",
+                    "IdActividad",
+                    "ID_local"};
     private static final String[] camposHorario = new String[]
             {"idHorario",
                     "horario"};
@@ -37,7 +37,7 @@ public class DataBaseHWork {
     public String insertar(asignacion asignacion) {
         long contador=0;
         String regInsertados="Registro Insertado Nº= " ;
-        contador=db.insert("asignacion" , null, asignacion.toContentValues());
+        contador = db.insert("ASIGNACION_LOCALES", null, asignacion.toContentValues());
         if(contador==-1 || contador==0)
         {
             regInsertados= "Error al Insertar el registro, Registro Duplicado. Verificar inserción" ;
@@ -51,7 +51,7 @@ public class DataBaseHWork {
 
     public asignacion consultarasignacion(String IdA) {
         String[] id = {IdA};
-        Cursor cursor = db.query("asignacion" , camposAsignacion, "cod_asignacion = ?" , id,null, null, null);
+        Cursor cursor = db.query("ASIGNACION_LOCALES", camposAsignacion, "cod_asignacion = ?", id, null, null, null);
         if(cursor.moveToFirst()){
             asignacion asignacion = new asignacion(cursor.getString(0),cursor.getString(1),cursor.getString(2));
 
@@ -76,8 +76,17 @@ public class DataBaseHWork {
                     @Override
                     public void onCreate(SQLiteDatabase db) {
                         try{
-                            db.execSQL("CREATE TABLE 'asignacion' ('cod_asignacion' INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL, 'actividadId' INTEGER NOT NULL, 'idLocal' INTEGER);" );
-                            db.execSQL("CREATE TABLE 'horario' ('idHorario' INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL, 'horaInicial' DATETIME NOT NULL, 'horaFinal' DATETIME NOT NULL);" );
+                            //Creacion de las tabla horario
+                            db.execSQL("CREATE TABLE 'HORARIO'  ('IDHORARIO' INTEGER not null, 'HORA_INICIO' DATE, 'HORA_FIN' DATE, constraint PK_HORARIO primary key (IDHORARIO))");
+
+                            //Creacion de las tabla horario
+                            db.execSQL("CREATE TABLE ASIGNACION_LOCALES(IDASIGNACIONLOCAL INTEGER not null,IDACTIVIDAD INTEGER,ID_LOCAL INTEGER,constraint PK_ASIGNACION_LOCALES primary key (IDASIGNACIONLOCAL));");
+                            //Creacion de foreign key
+                            db.execSQL("create index '3_FK' on ASIGNACION_LOCALES (IDACTIVIDAD ASC );");
+                            db.execSQL("create index '4_FK' on ASIGNACION_LOCALES (ID_LOCAL ASC);");
+
+
+
                         }catch(SQLException e){
                             e.printStackTrace();
                         }
@@ -108,8 +117,13 @@ public class DataBaseHWork {
     public String llenarBDCarnet(){
         abrir();
         try {
-            db.execSQL("DELETE FROM asignacion");
-            db.execSQL("insert into asignacion (actividadId,idLocal) values (2,3)" );
+
+
+            db.execSQL("DELETE FROM ASIGNACION_LOCALES");
+            db.execSQL("insert into ASIGNACION_LOCALES (IdActividad,ID_local) values (2,3)");
+
+
+
 
         }catch (Exception e){
             Log.d("my",e.toString());

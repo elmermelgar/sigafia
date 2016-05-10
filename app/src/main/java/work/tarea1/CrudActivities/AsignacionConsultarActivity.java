@@ -68,10 +68,10 @@ public class AsignacionConsultarActivity extends AppCompatActivity {
                     idAsignacion.getText().toString() +
                     " no encontrado", Toast.LENGTH_LONG).show();
         else{
-            idAsignacion.setText(asignacion.getCod_asignacion());
-            idLocal.setText(asignacion.getIdLocal());
+            idAsignacion.setText(asignacion.getIdAsignacionLocal());
+            idLocal.setText(asignacion.getID_local());
            // Actividad.setText(asignacion.getSexo());
-            idActividad.setText(asignacion.getActividadId());
+            idActividad.setText(asignacion.getIdActividad());
          //   Local.setText(asignacion. valueOf(alumno.getMatganadas()));
             }
     }
