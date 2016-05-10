@@ -17,7 +17,7 @@ public class DataBaseHWork {
 
     //se crean los campos que seran las columnas de nuestra base,solo sirven para hacacer referencia
     private static final String[] camposAsignacion = new String[]
-            {"ID_local",
+            {"idAsignacionLocal",
                     "IdActividad",
                     "ID_local"};
     private static final String[] camposHorario = new String[]
@@ -51,7 +51,7 @@ public class DataBaseHWork {
 
     public asignacion consultarasignacion(String IdA) {
         String[] id = {IdA};
-        Cursor cursor = db.query("ASIGNACION_LOCALES", camposAsignacion, "cod_asignacion = ?", id, null, null, null);
+        Cursor cursor = db.query("ASIGNACION_LOCALES", camposAsignacion, "idAsignacionLocal = ?", id, null, null, null);
         if(cursor.moveToFirst()){
             asignacion asignacion = new asignacion(cursor.getString(0),cursor.getString(1),cursor.getString(2));
 

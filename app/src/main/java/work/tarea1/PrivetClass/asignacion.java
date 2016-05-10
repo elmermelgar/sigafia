@@ -13,7 +13,7 @@ import java.util.Objects;
 public class asignacion {
     private String ID_local;
     private String IdActividad;
-    private String idAsignacionLocal;
+    private String idAsignacionLocal;//llave primaria
 
     public asignacion(String idAsignacionLocal, String IdActividad, String ID_local) {
         this.ID_local = ID_local;
@@ -29,10 +29,9 @@ public class asignacion {
     @TargetApi(Build.VERSION_CODES.KITKAT)
     public ContentValues toContentValues() {
         ContentValues Data = new ContentValues();
-
-        if (Objects.equals(ID_local, "0")) Data.put("cod_asignacion", ID_local);
-        Data.put("actividadId", IdActividad);
-        Data.put("idLocal", idAsignacionLocal);
+        Data.put("idAsignacionLocal", idAsignacionLocal);
+        Data.put("IdActividad", IdActividad);
+        Data.put("ID_local", ID_local);
 
 
         return Data;
