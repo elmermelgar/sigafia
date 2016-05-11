@@ -28,6 +28,12 @@
             android:name=".CrudActivities.AsignacionConsultarActivity"
             android:label="@string/title_activity_asignacion_consultar" >
         </activity>
+        <activity
+            android:name=".CrudActivities.AsignacionBorrar"
+            android:label="@string/title_activity_asignacion_borrar"></activity>
+        <activity
+            android:name=".CrudActivities.AsignacionMoficar"
+            android:label="@string/title_activity_asignacion_moficar"></activity>
     </application>
 
 </manifest>

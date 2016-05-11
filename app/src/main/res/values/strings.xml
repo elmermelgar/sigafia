@@ -6,4 +6,6 @@
     <string name="title_activity_asignacion_menu">asignacionMenu</string>
     <string name="title_activity_asignacion_insertar">AsignacionInsertarActivity</string>
     <string name="title_activity_asignacion_consultar">AsignacionConsultarActivity</string>
+    <string name="title_activity_asignacion_borrar">AsignacionBorrar</string>
+    <string name="title_activity_asignacion_moficar">AsignacionMoficar</string>
 </resources>

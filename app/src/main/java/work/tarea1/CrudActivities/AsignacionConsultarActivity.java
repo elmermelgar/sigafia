@@ -6,7 +6,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import work.tarea1.DataBaseHWork;
@@ -28,7 +27,7 @@ public class AsignacionConsultarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_asignacion_consultar);
 
         helper = new DataBaseHWork(this);
-        idAsignacion = (EditText) findViewById(R.id.idAsignacion);
+        idAsignacion = (EditText) findViewById(R.id.idAsignacionLabel);
         idLocal = (EditText) findViewById(R.id.idLocal);
         idActividad = (EditText) findViewById(R.id.idActividad);
 //        Actividad = (TextView) findViewById(R.id.Actividad);

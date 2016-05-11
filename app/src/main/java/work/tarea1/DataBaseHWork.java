@@ -34,7 +34,7 @@ public class DataBaseHWork {
         DBHelper = new DatabaseHelper(context);
     }
 
-    public String insertar(asignacion asignacion) {
+    public String insertarAsinacion(asignacion asignacion) {
         long contador=0;
         String regInsertados="Registro Insertado Nº= " ;
         contador = db.insert("ASIGNACION_LOCALES", null, asignacion.toContentValues());
@@ -59,6 +59,34 @@ public class DataBaseHWork {
     }else{
         return null;
     }
+
+    }
+
+    public String borrarAsignacion(String s) {
+        String regAfectados = "filas afectadas= ";
+        int contador = 0;
+        //   if (verificarIntegridad(alumno,3)) {
+        contador += db.delete("ASIGNACION_LOCALES", "IDASIGNACIONLOCAL='" + s + "'", null);
+        //   }
+        //  contador+=db.delete( "alumno" , "carnet='" +alumno.getCarnet()+"'", null);
+        regAfectados += contador;
+        return regAfectados;
+
+
+    }
+
+
+    public String actualizarAsignacion(asignacion asignacion) {
+        long contador = 0;
+        String[] id = {asignacion.getIdAsignacionLocal()};// OJO con las Llaves para poder se String []
+        String regInsertados = "Registro Actualizados: ";
+        contador = db.update("ASIGNACION_LOCALES", asignacion.toContentValues(), "IDASIGNACIONLOCAL = ?", id);
+        if (contador == -1 || contador == 0) {
+            regInsertados = "Error al Actualizar, \"id\" no encontrado";
+        } else {
+            regInsertados = regInsertados + contador;
+        }
+        return regInsertados;
 
     }
 
