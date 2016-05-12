@@ -8,4 +8,9 @@
     <string name="title_activity_asignacion_consultar">AsignacionConsultarActivity</string>
     <string name="title_activity_asignacion_borrar">AsignacionBorrar</string>
     <string name="title_activity_asignacion_moficar">AsignacionMoficar</string>
+    <string name="title_activity_horario_menu">horarioMenu</string>
+    <string name="title_activity_horario_insertar">HorarioInsertar</string>
+    <string name="title_activity_horario_consultar">HorarioConsultar</string>
+    <string name="title_activity_horario_actualizar">HorarioActualizar</string>
+    <string name="title_activity_horario_eliminar">HorarioEliminar</string>
 </resources>

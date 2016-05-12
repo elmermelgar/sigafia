@@ -30,10 +30,25 @@
         </activity>
         <activity
             android:name=".CrudActivities.AsignacionBorrar"
-            android:label="@string/title_activity_asignacion_borrar"></activity>
+            android:label="@string/title_activity_asignacion_borrar" />
         <activity
             android:name=".CrudActivities.AsignacionMoficar"
-            android:label="@string/title_activity_asignacion_moficar"></activity>
+            android:label="@string/title_activity_asignacion_moficar" />
+        <activity
+            android:name=".horarioMenu"
+            android:label="@string/title_activity_horario_menu"></activity>
+        <activity
+            android:name=".CrudActivities.HorarioInsertar"
+            android:label="@string/title_activity_horario_insertar"></activity>
+        <activity
+            android:name=".CrudActivities.HorarioConsultar"
+            android:label="@string/title_activity_horario_consultar"></activity>
+        <activity
+            android:name=".CrudActivities.HorarioActualizar"
+            android:label="@string/title_activity_horario_actualizar"></activity>
+        <activity
+            android:name=".CrudActivities.HorarioEliminar"
+            android:label="@string/title_activity_horario_eliminar"></activity>
     </application>
 
 </manifest>
