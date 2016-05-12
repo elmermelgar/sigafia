@@ -4,16 +4,48 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import work.tarea1.DataBaseHWork;
 import work.tarea1.R;
 
 public class HorarioEliminar extends AppCompatActivity {
 
+    private EditText idHorario;
+    private DataBaseHWork helper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_horario_eliminar);
+
+        helper = new DataBaseHWork(this);
+        idHorario = (EditText) findViewById(R.id.idHorario);
     }
+
+
+    public void borrarHorario(View view) {
+
+        String cont;
+        helper.abrir();
+        cont = helper.borrarHorario(idHorario.getText().toString());
+        helper.cerrar();
+        Toast.makeText(this, cont, Toast.LENGTH_SHORT).show();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -36,4 +68,5 @@ public class HorarioEliminar extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }

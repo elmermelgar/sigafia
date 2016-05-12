@@ -9,8 +9,31 @@
     tools:context="work.tarea1.CrudActivities.HorarioEliminar">
 
     <TextView
-        android:text="@string/hello_world"
+        android:text="id Asignacion"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:id="@+id/idAsignacionLabel" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Borrar"
+        android:id="@+id/Borrar"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="67dp"
+        android:layout_marginEnd="67dp"
+        android:onClick="borrarHorario" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/idHorario"
+        android:layout_below="@+id/idAsignacionLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:inputType="text"
+        android:layout_alignRight="@+id/idAsignacionLabel"
+        android:layout_alignEnd="@+id/idAsignacionLabel" />
 
 </RelativeLayout>

@@ -125,6 +125,17 @@ public class DataBaseHWork {
         return regInsertados;
     }
 
+    public String borrarHorario(String s) {
+        String regAfectados = "filas afectadas= ";
+        int contador = 0;
+        //   if (verificarIntegridad(alumno,3)) {
+        contador += db.delete("HORARIO", "IDHORARIO='" + s + "'", null);
+        //   }
+        //  contador+=db.delete( "alumno" , "carnet='" +alumno.getCarnet()+"'", null);
+        regAfectados += contador;
+        return regAfectados;
+    }
+
     private static class DatabaseHelper extends SQLiteOpenHelper {
         private static final String BASE_DATOS = "tarea1.s3db";
         private static final int VERSION = 1;
