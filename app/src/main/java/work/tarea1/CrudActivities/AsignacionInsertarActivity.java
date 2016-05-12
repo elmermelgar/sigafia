@@ -38,7 +38,6 @@ public class AsignacionInsertarActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_asignacion_insertar, menu);
         return true;
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will

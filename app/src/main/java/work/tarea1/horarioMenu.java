@@ -14,8 +14,8 @@ import android.widget.ListView;
 public class horarioMenu extends ListActivity {
     String[] menu = {"Insertar Horario", "Eliminar Horario", "Consultar Horario",
             "Actualizar Horario"};
-    String[] activities = {"HorarioInsertar", "HorarioBorrar", "HorarioConsultar",
-            "HorarioMoficar"};
+    String[] activities = {"HorarioInsertar", "HorarioEliminar", "HorarioConsultar",
+            "HorarioActualizar"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

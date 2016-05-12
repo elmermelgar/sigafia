@@ -4,24 +4,62 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import work.tarea1.DataBaseHWork;
+import work.tarea1.PrivetClass.horario;
 import work.tarea1.R;
 
 public class HorarioInsertar extends AppCompatActivity {
+
+    private DataBaseHWork helper;
+    private EditText idHorario;
+    private EditText horarioInicio;
+    private EditText horarioFinal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_horario_insertar);
+
+
+        helper = new DataBaseHWork(this);
+        idHorario = (EditText) findViewById(R.id.idHorario);
+        horarioInicio = (EditText) findViewById(R.id.horarioInicio);
+        horarioFinal = (EditText) findViewById(R.id.horarioFinal);
     }
 
+    public void insertarHorario(View view) {
+        String regInsertados;
+
+        horario horario = new horario(idHorario.getText().toString(), horarioInicio.getText().toString(), horarioFinal.getText().toString());
+        helper.abrir();
+        regInsertados = helper.insertarHorario(horario);
+        helper.cerrar();
+        Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_horario_insertar, menu);
         return true;
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -36,4 +74,5 @@ public class HorarioInsertar extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }

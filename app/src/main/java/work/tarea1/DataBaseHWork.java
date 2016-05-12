@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import work.tarea1.PrivetClass.asignacion;
+import work.tarea1.PrivetClass.horario;
 
 /**
  * Created by fhmen on 27/04/2016.
@@ -17,33 +18,29 @@ public class DataBaseHWork {
 
     //se crean los campos que seran las columnas de nuestra base,solo sirven para hacacer referencia
     private static final String[] camposAsignacion = new String[]
-            {"idAsignacionLocal",
-                    "IdActividad",
-                    "ID_local"};
+            {"idAsignacionLocal", "IdActividad", "ID_local"};
     private static final String[] camposHorario = new String[]
-            {"idHorario",
-                    "horario"};
+            {"IDHORARIO", "HORA_INICIO", "HORA_FIN"};
+
 
     private final Context context;
     private DatabaseHelper DBHelper;
     private SQLiteDatabase db;
 
 
-      public  DataBaseHWork (Context ctx) {
-        this. context = ctx;
+    public DataBaseHWork(Context ctx) {
+        this.context = ctx;
         DBHelper = new DatabaseHelper(context);
     }
 
     public String insertarAsinacion(asignacion asignacion) {
-        long contador=0;
-        String regInsertados="Registro Insertado Nº= " ;
+        long contador = 0;
+        String regInsertados = "Registro Insertado Nº= ";
         contador = db.insert("ASIGNACION_LOCALES", null, asignacion.toContentValues());
-        if(contador==-1 || contador==0)
-        {
-            regInsertados= "Error al Insertar el registro, Registro Duplicado. Verificar inserción" ;
-        }
-        else {
-            regInsertados=regInsertados+contador;
+        if (contador == -1 || contador == 0) {
+            regInsertados = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
+        } else {
+            regInsertados = regInsertados + contador;
         }
         return regInsertados;
 
@@ -52,13 +49,13 @@ public class DataBaseHWork {
     public asignacion consultarasignacion(String IdA) {
         String[] id = {IdA};
         Cursor cursor = db.query("ASIGNACION_LOCALES", camposAsignacion, "idAsignacionLocal = ?", id, null, null, null);
-        if(cursor.moveToFirst()){
-            asignacion asignacion = new asignacion(cursor.getString(0),cursor.getString(1),cursor.getString(2));
+        if (cursor.moveToFirst()) {
+            asignacion asignacion = new asignacion(cursor.getString(0), cursor.getString(1), cursor.getString(2));
 
-        return asignacion;
-    }else{
-        return null;
-    }
+            return asignacion;
+        } else {
+            return null;
+        }
 
     }
 
@@ -90,59 +87,92 @@ public class DataBaseHWork {
 
     }
 
+    public String insertarHorario(horario horario) {
+        long contador = 0;
+        String regInsertados = "Registro Insertado Nº= ";
+        contador = db.insert("HORARIO", null, horario.toContentValues());
+        if (contador == -1 || contador == 0) {
+            regInsertados = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
+        } else {
+            regInsertados = regInsertados + contador;
+        }
+        return regInsertados;
+
+    }
+
+    public horario consultarHorario(String IdA) {
+        String[] id = {IdA};// OJO con las Llaves para poder se String []
+        Cursor cursor = db.query("HORARIO", camposHorario, "IDHORARIO = ?", id, null, null, null);
+        if (cursor.moveToFirst()) {
+            horario horario = new horario(cursor.getString(0), cursor.getString(1), cursor.getString(2));
+
+            return horario;
+        } else {
+            return null;
+        }
+    }
+
+    public String actualizarHorario(horario horario) {
+        long contador = 0;
+        String[] id = {horario.getIdHorario()};// OJO con las Llaves para poder se String []
+        String regInsertados = "Registro Actualizados: ";
+        contador = db.update("HORARIO", horario.toContentValues(), "IDHORARIO = ?", id);
+        if (contador == -1 || contador == 0) {
+            regInsertados = "Error al Actualizar, \"id\" no encontrado";
+        } else {
+            regInsertados = regInsertados + contador;
+        }
+        return regInsertados;
+    }
+
     private static class DatabaseHelper extends SQLiteOpenHelper {
-        private static final String BASE_DATOS = "tarea1.s3db" ;
+        private static final String BASE_DATOS = "tarea1.s3db";
         private static final int VERSION = 1;
 
 
-                    public DatabaseHelper(Context context) {
-                        super(context, BASE_DATOS, null, VERSION);
-                    }
+        public DatabaseHelper(Context context) {
+            super(context, BASE_DATOS, null, VERSION);
+        }
 
 
+        @Override
+        public void onCreate(SQLiteDatabase db) {
+            try {
+                //Creacion de las tabla horario
+                db.execSQL("CREATE TABLE 'HORARIO'  ('IDHORARIO' INTEGER not null, 'HORA_INICIO' DATE, 'HORA_FIN' DATE, constraint PK_HORARIO primary key (IDHORARIO))");
 
-                    @Override
-                    public void onCreate(SQLiteDatabase db) {
-                        try{
-                            //Creacion de las tabla horario
-                            db.execSQL("CREATE TABLE 'HORARIO'  ('IDHORARIO' INTEGER not null, 'HORA_INICIO' DATE, 'HORA_FIN' DATE, constraint PK_HORARIO primary key (IDHORARIO))");
-
-                            //Creacion de las tabla horario
-                            db.execSQL("CREATE TABLE ASIGNACION_LOCALES(IDASIGNACIONLOCAL INTEGER not null,IDACTIVIDAD INTEGER,ID_LOCAL INTEGER,constraint PK_ASIGNACION_LOCALES primary key (IDASIGNACIONLOCAL));");
-                            //Creacion de foreign key
-                            db.execSQL("create index '3_FK' on ASIGNACION_LOCALES (IDACTIVIDAD ASC );");
-                            db.execSQL("create index '4_FK' on ASIGNACION_LOCALES (ID_LOCAL ASC);");
-
+                //Creacion de las tabla horario
+                db.execSQL("CREATE TABLE ASIGNACION_LOCALES(IDASIGNACIONLOCAL INTEGER not null,IDACTIVIDAD INTEGER,ID_LOCAL INTEGER,constraint PK_ASIGNACION_LOCALES primary key (IDASIGNACIONLOCAL));");
+                //Creacion de foreign key
+                db.execSQL("create index '3_FK' on ASIGNACION_LOCALES (IDACTIVIDAD ASC );");
+                db.execSQL("create index '4_FK' on ASIGNACION_LOCALES (ID_LOCAL ASC);");
 
 
-                        }catch(SQLException e){
-                            e.printStackTrace();
-                        }
-                    }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
 
 
-                        @Override
-                        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-                // TODO Auto-generated method stub
-                        }
+        @Override
+        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+            // TODO Auto-generated method stub
+        }
     }
 
 
-
-    public void abrir() throws SQLException{
+    public void abrir() throws SQLException {
         db = DBHelper.getWritableDatabase();
         return;
     }
 
 
-
-    public void cerrar(){
+    public void cerrar() {
         DBHelper.close();
     }
 
 
-
-    public String llenarBDCarnet(){
+    public String llenarBDCarnet() {
         abrir();
         try {
 
@@ -151,10 +181,8 @@ public class DataBaseHWork {
             db.execSQL("insert into ASIGNACION_LOCALES (IdActividad,ID_local) values (2,3)");
 
 
-
-
-        }catch (Exception e){
-            Log.d("my",e.toString());
+        } catch (Exception e) {
+            Log.d("my", e.toString());
             return "Guardo Error";
         }
 
