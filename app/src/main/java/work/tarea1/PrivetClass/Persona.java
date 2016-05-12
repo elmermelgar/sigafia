@@ -18,7 +18,7 @@ public class Persona {
 
         //Campos de la tabla
         private String idPersona;
-        private Integer idTipoPersona;
+        private String idTipoPersona;
         //@DatabaseField(columnName=CARNET,id =true ,unique = true,canBeNull = false,index = true)
         //private String carnet;
         //@DatabaseField(columnName = NOMBRE,canBeNull = false)
@@ -37,7 +37,7 @@ public class Persona {
         public Persona() {
         }
 
-        public Persona(String idPersona, Integer idTipoPersona, String nombre, String dui, String gradoAcademico, String apellido, String email, String genero) {
+        public Persona(String idPersona, String idTipoPersona, String nombre, String dui, String gradoAcademico, String apellido, String email, String genero) {
             this.idPersona = idPersona;
             this.idTipoPersona = idTipoPersona;
             this.nombre = nombre;
@@ -85,11 +85,11 @@ public class Persona {
             this.idPersona = idPersona;
         }
 
-        public Integer getIdTipoPersona() {
+        public String getIdTipoPersona() {
             return idTipoPersona;
         }
 
-        public void setIdTipoPersona(Integer idTipoPersona) {
+        public void setIdTipoPersona(String idTipoPersona) {
             this.idTipoPersona = idTipoPersona;
         }
 
