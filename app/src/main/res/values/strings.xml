@@ -28,22 +28,20 @@
     <string name="descripcion">Descripcion</string>
 
 
-
     <!--Fin TipoPersona -->
-
 
 
     <!-- Recursos de Persona -->
     <string name="title_activity_persona_menu">PersonaMenuActivity</string>
     <string name="title_activity_persona_insertar">PersonaInsertarActivity</string>
-    <string name="id_persona">Cod. Persona</string>
-    <string name="id_tipo_persona">Tipo Persona</string>
-    <string name="nombre">Nombre</string>
-    <string name="apellido">Apellido</string>
-    <string name="dui">DUI</string>
-    <string name="grado_academico">Grado Academico</string>
-    <string name="genero">Genero</string>
-    <string name="email">Email</string>
+    <string name="id_persona">Cod. Persona:</string>
+    <string name="id_tipo_persona">Tipo Persona:</string>
+    <string name="nombre">Nombre:</string>
+    <string name="apellido">Apellido:</string>
+    <string name="dui">DUI:</string>
+    <string name="grado_academico">Grado Academico:</string>
+    <string name="genero">Genero:</string>
+    <string name="email">Email:</string>
 
     <!--Fin Persona-->
 </resources>

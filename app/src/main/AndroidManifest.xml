@@ -31,7 +31,10 @@
         <activity android:name=".CrudActivities.TipoPersonaConsultarActivity" />
         <activity android:name=".CrudActivities.TipoPersonaActualizarActivity" />
         <activity android:name=".CrudActivities.TipoPersonaEliminarActivity" />
-        <activity android:name=".PersonaMenuActivity"></activity>
+        <activity android:name=".PersonaMenuActivity" />
+        <activity android:name=".CrudActivities.PersonaConsultarActivity" />
+        <activity android:name=".CrudActivities.PersonaActualizarActivity" />
+        <activity android:name=".CrudActivities.PersonaEliminarActivity"></activity>
     </application>
 
 </manifest>

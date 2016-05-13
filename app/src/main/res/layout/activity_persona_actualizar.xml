@@ -68,8 +68,8 @@
 
     <TableRow>
         <Button
-            android:onClick="insertarPersona"
-            android:text="@string/insertar" />
+            android:onClick="actualizarPersona"
+            android:text="@string/actualizar" />
         <Button
             android:onClick="limpiarTexto"
             android:text="@string/limpiar" />

@@ -1,22 +1,18 @@
 package work.tarea1.CrudActivities;
 
-import android.app.ListActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
-
-import java.util.ArrayList;
 
 import work.tarea1.DataBaseHWork;
 import work.tarea1.PrivetClass.Persona;
 import work.tarea1.R;
 
-public class PersonaInsertarActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+public class PersonaActualizarActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     DataBaseHWork helper;
     EditText editIdPersona;
     Spinner spTipoPersona;
@@ -30,7 +26,7 @@ public class PersonaInsertarActivity extends AppCompatActivity implements Adapte
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_persona_insertar);
+        setContentView(R.layout.activity_persona_actualizar);
         helper=new DataBaseHWork(this);
         editIdPersona=(EditText)findViewById(R.id.editIdPersona);
         spTipoPersona=(Spinner)findViewById(R.id.spinner_tipo_persona);
@@ -42,15 +38,14 @@ public class PersonaInsertarActivity extends AppCompatActivity implements Adapte
         editGradoAcademico=(EditText)findViewById(R.id.editGradoAcademico);
         editGenero=(EditText)findViewById(R.id.editGenero);
         editEmail=(EditText)findViewById(R.id.editEmail);
-
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String filter = parent.getItemAtPosition(position).toString();
-        idTipoPersona=(String)helper.getValueSelectedSpineer("codigo","tipo_persona","TipoPersona",true,filter);
+        idTipoPersona=(String)helper.getValueSelectedSpineer("codigo", "tipo_persona", "TipoPersona", true, filter);
         // Showing selected spinner item
-        /*Toast.makeText(parent.getContext(), "You selected: " +idTipoPersona,
+       /* Toast.makeText(parent.getContext(), "You selected: " + idTipoPersona,
                 Toast.LENGTH_LONG).show();*/
     }
 
@@ -59,7 +54,11 @@ public class PersonaInsertarActivity extends AppCompatActivity implements Adapte
 
 
     }
-    public void insertarPersona(View v) {
+    private void loadSpinnerData(){
+        spTipoPersona.setAdapter(helper.prepareSpinner(this, "TipoPersona", "tipo_persona", "codigo"));
+    }
+
+    public void actualizarPersona(View v) {
 
         String idPersona=editIdPersona.getText().toString();
 
@@ -70,15 +69,15 @@ public class PersonaInsertarActivity extends AppCompatActivity implements Adapte
         String gradoAcademico=editGradoAcademico.getText().toString();
         String genero=editGenero.getText().toString();
         String email=editEmail.getText().toString();
-        String regInsertados;
+
 
 
 
         Persona p=new Persona(idPersona,idTipoPersona,nombre,apellido,dui,gradoAcademico,genero,email);
         helper.abrir();
-        regInsertados=helper.insertar(p);
+        String estado=helper.actualizar(p);
         helper.cerrar();
-        Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
     }
     public void limpiarTexto(View v) {
         editNombre.setText("");
@@ -89,10 +88,5 @@ public class PersonaInsertarActivity extends AppCompatActivity implements Adapte
         editEmail.setText("");
         editDui.setText("");
 
-    }
-
-
-    private void loadSpinnerData(){
-        spTipoPersona.setAdapter(helper.prepareSpinner(this,"TipoPersona", "tipo_persona", "codigo"));
     }
 }

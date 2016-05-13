@@ -170,6 +170,17 @@ public class DataBaseHWork {
                 return false;
             }
             case 2: {
+                //verificar que exista Persona
+                Persona persona = (Persona) dato;
+                String[] id = {persona.getIdPersona()};
+                abrir();
+                Cursor c2 = db.query("Persona", null, "id_persona = ?", id, null, null,
+                        null);
+                if (c2.moveToFirst()) {
+                    //Se encontro TipoPersona
+                    return true;
+                }
+                return false;
 
             }
             default:
@@ -262,14 +273,39 @@ public class DataBaseHWork {
         }
         return regInsertados;
     }
-
+    //actualizar Persona
     public String actualizar(Persona persona) {
+        if (verificarIntegridad(persona, 2)) {
+            String[] id = {persona.getIdPersona()};
+            ContentValues cv = new ContentValues();
+            cv.put("id_persona", persona.getIdPersona());
+            cv.put("id_tipo_persona", persona.getIdTipoPersona());
+            cv.put("nombre", persona.getNombre());
+            cv.put("apellido", persona.getApellido());
+            cv.put("dui", persona.getDui());
+            cv.put("grado_academico", persona.getGradoAcademico());
+            cv.put("genero", persona.getGenero());
+            cv.put("email", persona.getEmail());
+            db.update("Persona", cv, "id_persona = ?", id);
+            return "Registro Actualizado Correctamente";
+        } else {
+            return "Registro con carnet " + persona.getIdPersona()+ " no existe";
+        }
 
-        return null;
     }
 
     public String eliminar(Persona persona) {
-        return null;
+
+        String regAfectados = "filas afectadas= ";
+        int contador = 0;
+        if (verificarIntegridad(persona, 2)) {
+            contador += db.delete("Persona", "id_persona='" + persona.getIdPersona() + "'", null);
+        }
+
+        regAfectados += contador;
+        return regAfectados;
+
+
     }
 
     public Persona consultarPersona(String idPersona) {
@@ -317,18 +353,18 @@ public class DataBaseHWork {
         return dataAdapter;
     }
 
-    public Object getValueSelectedSpineer(String label, String table, Boolean isLabelString, Object value) {
+    public Object getValueSelectedSpineer(String value,String label, String table, Boolean isValueString, Object filter) {
 
         abrir();
-        if (isLabelString == true) {
-            Cursor cursor = db.rawQuery("select " + label + " from " + table + " where " + label + " like '" + value + "'", null);
+        if (isValueString == true) {
+            Cursor cursor = db.rawQuery("select " + value + " from " + table + " where " + label + " like '" + filter + "'", null);
 
             if(cursor.moveToFirst())
                 return cursor.getString(0);
 
         }
         else{
-            Cursor cursor = db.rawQuery("select " + label + " from " + table + " where " + label + "=" + value , null);
+            Cursor cursor = db.rawQuery("select " + label + " from " + table + " where " + label + " like '" + filter + "'" , null);
 
             if(cursor.moveToFirst())
                 return cursor.getInt(0);
