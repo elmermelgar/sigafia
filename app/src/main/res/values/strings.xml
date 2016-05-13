@@ -13,4 +13,19 @@
     <string name="title_activity_horario_consultar">HorarioConsultar</string>
     <string name="title_activity_horario_actualizar">HorarioActualizar</string>
     <string name="title_activity_horario_eliminar">HorarioEliminar</string>
+
+    <string-array name="Games">
+        <item>League of Legends</item>
+        <item>Diablo III</item>
+        <item>God of War</item>
+        <item>Halo 4</item>
+        <item>StarCraft II</item>
+    </string-array>
+    <string name="title_activity_local">local</string>
+    <string name="title_activity_local_insertar">LocalInsertar</string>
+    <string name="title_activity_local_consultar">LocalConsultar</string>
+    <string name="title_activity_local_actualizar">LocalActualizar</string>
+    <string name="title_activity_local_eliminar">LocalEliminar</string>
+
+
 </resources>

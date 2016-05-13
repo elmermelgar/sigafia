@@ -36,19 +36,34 @@
             android:label="@string/title_activity_asignacion_moficar" />
         <activity
             android:name=".horarioMenu"
-            android:label="@string/title_activity_horario_menu"></activity>
+            android:label="@string/title_activity_horario_menu" />
         <activity
             android:name=".CrudActivities.HorarioInsertar"
-            android:label="@string/title_activity_horario_insertar"></activity>
+            android:label="@string/title_activity_horario_insertar" />
         <activity
             android:name=".CrudActivities.HorarioConsultar"
-            android:label="@string/title_activity_horario_consultar"></activity>
+            android:label="@string/title_activity_horario_consultar" />
         <activity
             android:name=".CrudActivities.HorarioActualizar"
-            android:label="@string/title_activity_horario_actualizar"></activity>
+            android:label="@string/title_activity_horario_actualizar" />
         <activity
             android:name=".CrudActivities.HorarioEliminar"
-            android:label="@string/title_activity_horario_eliminar"></activity>
+            android:label="@string/title_activity_horario_eliminar" />
+        <activity
+            android:name=".localMenu"
+            android:label="@string/title_activity_local"></activity>
+        <activity
+            android:name=".CrudActivities.LocalInsertar"
+            android:label="@string/title_activity_local_insertar"></activity>
+        <activity
+            android:name=".CrudActivities.LocalConsultar"
+            android:label="@string/title_activity_local_consultar"></activity>
+        <activity
+            android:name=".CrudActivities.LocalActualizar"
+            android:label="@string/title_activity_local_actualizar"></activity>
+        <activity
+            android:name=".CrudActivities.LocalEliminar"
+            android:label="@string/title_activity_local_eliminar"></activity>
     </application>
 
 </manifest>

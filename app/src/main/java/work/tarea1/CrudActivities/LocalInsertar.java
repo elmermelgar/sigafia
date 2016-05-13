@@ -7,70 +7,52 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.SimpleCursorAdapter;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import work.tarea1.DataBaseHWork;
-import work.tarea1.PrivetClass.horario;
+import work.tarea1.PrivetClass.local;
 import work.tarea1.R;
 
-public class HorarioInsertar extends AppCompatActivity {
+public class LocalInsertar extends AppCompatActivity {
 
     private DataBaseHWork helper;
-    private EditText idHorario;
-    private EditText horarioInicio;
-    private EditText horarioFinal;
-    protected ArrayAdapter<CharSequence> adapter;
+    private EditText idLocal;
+    private EditText direccion;
+    private EditText capacidad;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_horario_insertar);
-
+        setContentView(R.layout.activity_local_insertar);
 
         helper = new DataBaseHWork(this);
-        idHorario = (EditText) findViewById(R.id.idHorario);
-        horarioInicio = (EditText) findViewById(R.id.horarioInicio);
-        horarioFinal = (EditText) findViewById(R.id.horarioFinal);
-
-        //codigo de spiner quemado con un string
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
-        adapter = ArrayAdapter.createFromResource(this, R.array.Games, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-
+        idLocal = (EditText) findViewById(R.id.idLocal);
+        direccion = (EditText) findViewById(R.id.direccion);
+        capacidad = (EditText) findViewById(R.id.capacidad);
     }
 
-    public void insertarHorario(View view) {
+
+    public void insertarLocal(View view) {
+
         String regInsertados;
 
-        horario horario = new horario(idHorario.getText().toString(), horarioInicio.getText().toString(), horarioFinal.getText().toString());
+        local local = new local(idLocal.getText().toString(), direccion.getText().toString(), capacidad.getText().toString());
         helper.abrir();
-        regInsertados = helper.insertarHorario(horario);
+        regInsertados = helper.insertarLocal(local);
         helper.cerrar();
         Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_horario_insertar, menu);
+        getMenuInflater().inflate(R.menu.menu_local_insertar, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will

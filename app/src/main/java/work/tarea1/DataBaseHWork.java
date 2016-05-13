@@ -6,9 +6,11 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.EditText;
 
 import work.tarea1.PrivetClass.asignacion;
 import work.tarea1.PrivetClass.horario;
+import work.tarea1.PrivetClass.local;
 
 /**
  * Created by fhmen on 27/04/2016.
@@ -21,7 +23,8 @@ public class DataBaseHWork {
             {"idAsignacionLocal", "IdActividad", "ID_local"};
     private static final String[] camposHorario = new String[]
             {"IDHORARIO", "HORA_INICIO", "HORA_FIN"};
-
+    private static final String[] camposLocal = new String[]
+            {"ID_LOCAL", "DIRECCION", "CAPACIDAD"};
 
     private final Context context;
     private DatabaseHelper DBHelper;
@@ -136,6 +139,55 @@ public class DataBaseHWork {
         return regAfectados;
     }
 
+    public String insertarLocal(local local) {
+        long contador = 0;
+        String regInsertados = "Registro Insertado Nº= ";
+        contador = db.insert("LOCAL", null, local.toContentValues());
+        if (contador == -1 || contador == 0) {
+            regInsertados = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
+        } else {
+            regInsertados = regInsertados + contador;
+        }
+        return regInsertados;
+    }
+
+    public local consultarLocal(String IdA) {
+        String[] id = {IdA};// OJO con las Llaves para poder se String []
+        Cursor cursor = db.query("LOCAL", camposLocal, "ID_LOCAL= ?", id, null, null, null);
+        if (cursor.moveToFirst()) {
+            local local = new local(cursor.getString(0), cursor.getString(1), cursor.getString(2));
+
+            return local;
+        } else {
+            return null;
+        }
+    }
+
+    public String actualizarLocal(local local) {
+        long contador = 0;
+        String[] id = {local.getID_local()};// OJO con las Llaves para poder se String []
+        String regInsertados = "Registro Actualizados: ";
+        contador = db.update("LOCAL", local.toContentValues(), "ID_LOCAL = ?", id);
+        if (contador == -1 || contador == 0) {
+            regInsertados = "Error al Actualizar, \"id\" no encontrado";
+        } else {
+            regInsertados = regInsertados + contador;
+        }
+        return regInsertados;
+    }
+
+    public String borrarLocal(String s) {
+        String regAfectados = "filas afectadas= ";
+        int contador = 0;
+        //   if (verificarIntegridad(alumno,3)) {
+        contador += db.delete("LOCAL", "ID_LOCAL='" + s + "'", null);
+        //   }
+        //  contador+=db.delete( "alumno" , "carnet='" +alumno.getCarnet()+"'", null);
+        regAfectados += contador;
+        return regAfectados;
+    }
+
+
     private static class DatabaseHelper extends SQLiteOpenHelper {
         private static final String BASE_DATOS = "tarea1.s3db";
         private static final int VERSION = 1;
@@ -152,11 +204,24 @@ public class DataBaseHWork {
                 //Creacion de las tabla horario
                 db.execSQL("CREATE TABLE 'HORARIO'  ('IDHORARIO' INTEGER not null, 'HORA_INICIO' DATE, 'HORA_FIN' DATE, constraint PK_HORARIO primary key (IDHORARIO))");
 
-                //Creacion de las tabla horario
+
+                //Creacion de las tabla ASIGNACION_LOCALES
                 db.execSQL("CREATE TABLE ASIGNACION_LOCALES(IDASIGNACIONLOCAL INTEGER not null,IDACTIVIDAD INTEGER,ID_LOCAL INTEGER,constraint PK_ASIGNACION_LOCALES primary key (IDASIGNACIONLOCAL));");
                 //Creacion de foreign key
                 db.execSQL("create index '3_FK' on ASIGNACION_LOCALES (IDACTIVIDAD ASC );");
                 db.execSQL("create index '4_FK' on ASIGNACION_LOCALES (ID_LOCAL ASC);");
+
+
+                //Creacion de las tablas para pruebas
+                //Creacion de las tabla Actividad
+                db.execSQL("create table ACTIVIDAD( IDACTIVIDAD INTEGER not null,   IDTIPOACTIVIDAD      INTEGER,   IDPERSONA            CHAR(8),   DESCRIPCION        VARCHAR2(150),constraint PK_ACTIVIDAD primary key (IDACTIVIDAD));");
+                db.execSQL("create index 'RELATIONSHIP_1_FK' on ACTIVIDAD (IDTIPOACTIVIDAD ASC);");
+                db.execSQL("create index '2_FK' on ACTIVIDAD (IDPERSONA ASC );");
+
+                //Creacion de las tabla Actividad
+                db.execSQL("create table LOCAL (ID_LOCAL  INTEGER not null, DIRECCION VARCHAR2(100),CAPACIDAD INTEGER,constraint PK_LOCAL primary key (ID_LOCAL));");
+
+
 
 
             } catch (SQLException e) {
@@ -183,18 +248,33 @@ public class DataBaseHWork {
     }
 
 
-    public String llenarBDCarnet() {
+    public String llenarBD() {
         abrir();
         try {
+
+
+            db.execSQL("create table ACTIVIDAD( IDACTIVIDAD INTEGER not null,   IDTIPOACTIVIDAD      INTEGER,   IDPERSONA            CHAR(8),   DESCRIPCION        VARCHAR2(150),constraint PK_ACTIVIDAD primary key (IDACTIVIDAD));");
+            db.execSQL("create index 'RELATIONSHIP_1_FK' on ACTIVIDAD (IDTIPOACTIVIDAD ASC);");
+            db.execSQL("create index '2_FK' on ACTIVIDAD (IDPERSONA ASC );");
+
+            //Creacion de las tabla Actividad
+            db.execSQL("create table LOCAL (ID_LOCAL  INTEGER not null, DIRECCION VARCHAR2(100),CAPACIDAD INTEGER,constraint PK_LOCAL primary key (ID_LOCAL));");
 
 
             db.execSQL("DELETE FROM ASIGNACION_LOCALES");
             db.execSQL("insert into ASIGNACION_LOCALES (IdActividad,ID_local) values (2,3)");
 
 
+            db.execSQL("INSERT INTO 'ACTIVIDAD' VALUES(1,1,'dui1','clase de PDM');");
+            db.execSQL("INSERT INTO 'ACTIVIDAD' VALUES(2,1,'dui2','clase de PDM numero 2');");
+            db.execSQL("INSERT INTO 'ACTIVIDAD' VALUES(3,1,'dui3','clase de PDM sim pd333');");
+            db.execSQL("  INSERT INTO 'LOCAL' VALUES(1,'AV UNIVERSITARIA ',25);");
+            db.execSQL("  INSERT INTO 'LOCAL' VALUES(2,'AV 2221111 UNIVERSITARIA ',250);");
+            db.execSQL("  INSERT INTO 'LOCAL' VALUES(3,'AV 33332222 UNIVERSITARIA ',251);");
+
         } catch (Exception e) {
             Log.d("my", e.toString());
-            return "Guardo Error";
+            return "Error" + e.toString();
         }
 
 
