@@ -9,7 +9,7 @@
     tools:context="work.tarea1.CrudActivities.HorarioEliminar">
 
     <TextView
-        android:text="id Asignacion"
+        android:text="id Hora"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/idAsignacionLabel" />
