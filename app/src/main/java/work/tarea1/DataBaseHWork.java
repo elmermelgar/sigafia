@@ -21,6 +21,9 @@ import work.tarea1.PrivetClass.*;
 public class DataBaseHWork {
 
 
+    //variable para recuperar el id de actividad y setear el widget
+
+
     //se crean los campos que seran las columnas de nuestra base,solo sirven para hacacer referencia
     private static final String[] camposAsignacion = new String[]
             {"cod_asignacion",
@@ -35,6 +38,8 @@ public class DataBaseHWork {
     private static final String[] camposTipoPersona = new String[]
             {"codigo", "tipo_persona", "descripcion"};
 
+    private static final String[] camposActividad = new String[]
+            {"id_actividad", "id_tipo_actividad", "id_persona", "descripcion"};
     //private HashMap<String, String> spinnerTipoPersonaMap;
 
     private final Context context;
@@ -83,7 +88,7 @@ public class DataBaseHWork {
 */
     private static class DatabaseHelper extends SQLiteOpenHelper {
         //private static final String BASE_DATOS = "tarea1.s3db" ;
-        private static final String BASE_DATOS = "tarea1BD_1.s3db";
+        private static final String BASE_DATOS = "tarea1.s3db";
         private static final int VERSION = 1;
 
 
@@ -104,6 +109,10 @@ public class DataBaseHWork {
                         "'genero' VARCHAR(1),'email' VARCHAR(50));");
                 db.execSQL("CREATE TABLE 'TipoPersona'('codigo' VARCHAR(10) NOT NULL"
                         + " PRIMARY KEY,'tipo_persona' VARCHAR(30),'descripcion' VARCHAR(150));");
+
+                db.execSQL("CREATE TABLE 'Actividad'('id_actividad'INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,'id_tipo_actividad' INTEGER NOT NULL,'id_persona' VARCHAR(8) NOT NULL,'descripcion' VARCHAR(500));") ;
+
+                db.execSQL("CREATE TABLE 'TipoActividad' ('id_tipo_actividad' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 'tipo_actividad' VARCHAR(50) NOT NULL);");
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -142,10 +151,17 @@ public class DataBaseHWork {
             //db.execSQL("INSERT INTO TipoPersona(codigo,tipo_persona,descripcion) values('x115','Externo','Externo') ");
             //Insersion tabla Persona
             db.execSQL("DELETE FROM Persona");
+            db.execSQL("INSERT INTO Persona(id_persona,id_tipo_persona,nombre,apellido,dui,grado_academico,genero,email) values('lr12003','e115','David','Lopez','049804221','bachiller','M','daviddust21@gmail.com') ");
+            db.execSQL("INSERT INTO Persona(id_persona,id_tipo_persona,nombre,apellido,dui,grado_academico,genero,email) values('cm98001','d115','Cesar','Milan','049804221','ingeniero','M','cesar.milan@gmail.com') ");
+
+            db.execSQL("DELETE FROM TipoActividad");
+            db.execSQL("INSERT INTO TipoActividad(tipo_actividad) values('Clase') ");
+            db.execSQL("INSERT INTO TipoActividad(tipo_actividad) values('Discusión') ");
+            db.execSQL("INSERT INTO TipoActividad(tipo_actividad) values('Conferencia') ");
 
         } catch (Exception e) {
             Log.d("my", e.toString());
-            return "Guardo Error";
+            return "Error al guardar";
         }
 
 
@@ -182,6 +198,20 @@ public class DataBaseHWork {
                 }
                 return false;
 
+            }
+            case 3:{
+                //verificar que exista Actividad
+                Actividad actividad = (Actividad) dato;
+                String value=actividad.getIdActividadString();
+                String[] id = {value};
+                abrir();
+                Cursor c2 = db.query("Actividad", null, "id_actividad = ?", id, null, null,
+                        null);
+                if (c2.moveToFirst()) {
+                    //Se encontro Actividad
+                    return true;
+                }
+                return false;
             }
             default:
                 return false;
@@ -293,7 +323,7 @@ public class DataBaseHWork {
         }
 
     }
-
+    //Eliminar Persona
     public String eliminar(Persona persona) {
 
         String regAfectados = "filas afectadas= ";
@@ -307,7 +337,7 @@ public class DataBaseHWork {
 
 
     }
-
+    //Consultar Persona
     public Persona consultarPersona(String idPersona) {
         String[] id = {idPersona};
         Cursor cursor = db.query("Persona", camposPersona, "id_persona = ?", id,
@@ -328,6 +358,99 @@ public class DataBaseHWork {
             return null;
         }
     }
+    //Insertar Actividad
+    public String insertar(Actividad actividad) {
+
+
+        String regInsertados = "Registro Insertado Nº= ";
+        Integer idActividad=null;
+        long contador = 0;
+        ContentValues alum = new ContentValues();
+        //alum.put("id_actividad", actividad.getIdActividad());
+        alum.put("id_tipo_actividad",actividad.getIdTipoActividad());
+        alum.put("id_persona",actividad.getIdPersona());
+        alum.put("descripcion", actividad.getDescripcion());
+
+        contador = db.insert("Actividad", null, alum);
+        if (contador == -1 || contador == 0) {
+            regInsertados = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
+        } else {
+
+            Cursor cursor=db.rawQuery("select * from Actividad where id_actividad=(select max(id_actividad) from Actividad)",null);
+            if(cursor.moveToFirst())
+               idActividad=cursor.getInt(0);
+
+        }
+        return  idActividad.toString() ;
+    }
+
+    //Consultar Actividad
+    public Actividad consultarActividad(String idActividad) {
+        String[] id = {idActividad};
+        Cursor cursor = db.query("Actividad", camposActividad, "id_actividad = ?",id ,
+                null, null, null);
+        if (cursor.moveToFirst()) {
+            Actividad actividad=new Actividad();
+            actividad.setIdActividad(cursor.getInt(0));
+            actividad.setIdTipoActividad(cursor.getInt(1));
+            actividad.setIdPersona(cursor.getString(2));
+            actividad.setDescripcion(cursor.getString(3));
+
+
+            return actividad;
+        } else {
+            return null;
+        }
+    }
+//Actualizar Actividad
+    public String actualizar(Actividad actividad) {
+        if (verificarIntegridad(actividad, 3)) {
+            String[] id = {actividad.getIdActividadString()};
+            ContentValues cv = new ContentValues();
+            cv.put("id_actividad", actividad.getIdActividadString());
+            cv.put("id_tipo_actividad", actividad.getIdTipoActividad());
+            cv.put("id_persona", actividad.getIdPersona());
+            cv.put("descripcion", actividad.getDescripcion());
+
+            db.update("Actividad", cv, "id_actividad = ?", id);
+            return "Registro Actualizado Correctamente";
+        } else {
+            return "Registro con id. " + actividad.getIdActividadString()+ " no existe";
+        }
+
+    }
+
+    //Eliminar Actividad
+    public String eliminar(Actividad actividad) {
+
+        String regAfectados = "filas afectadas= ";
+        int contador = 0;
+        if (verificarIntegridad(actividad, 3)) {
+            contador += db.delete("Actividad", "id_actividad='" + actividad.getIdActividadString() + "'", null);
+        }
+
+        regAfectados += contador;
+        return regAfectados;
+
+
+    }
+
+    public Integer getIdTabla(String tabla,String idLabel){
+        Integer object=null;
+        abrir();
+        Cursor cursor=db.rawQuery("select * from '"+tabla+"' order by '"+idLabel+"' desc limit 1",null);
+        if(cursor.moveToFirst()){
+            object=cursor.getInt(0);
+            System.out.println("id. tabla=" + object);
+
+            return object;
+        }
+
+
+        cerrar();
+        return null;
+    }
+
 
     public ArrayAdapter<?> prepareSpinner(Context ctx, String table, String label, String value) {
         Class clase = label.getClass();
@@ -364,7 +487,7 @@ public class DataBaseHWork {
 
         }
         else{
-            Cursor cursor = db.rawQuery("select " + label + " from " + table + " where " + label + " like '" + filter + "'" , null);
+            Cursor cursor = db.rawQuery("select " + value + " from " + table + " where " + label + " like '" + filter + "'" , null);
 
             if(cursor.moveToFirst())
                 return cursor.getInt(0);

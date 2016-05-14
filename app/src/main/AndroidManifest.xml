@@ -34,7 +34,12 @@
         <activity android:name=".PersonaMenuActivity" />
         <activity android:name=".CrudActivities.PersonaConsultarActivity" />
         <activity android:name=".CrudActivities.PersonaActualizarActivity" />
-        <activity android:name=".CrudActivities.PersonaEliminarActivity"></activity>
+        <activity android:name=".CrudActivities.PersonaEliminarActivity" />
+        <activity android:name=".ActividadMenuActivity" />
+        <activity android:name=".CrudActivities.ActividadInsertarActivity" />
+        <activity android:name=".CrudActivities.ActividadConsultarActivity" />
+        <activity android:name=".CrudActivities.ActividadActualizarActivity" />
+        <activity android:name=".CrudActivities.ActividadEliminarActivity"></activity>
     </application>
 
 </manifest>

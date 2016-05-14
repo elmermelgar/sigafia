@@ -61,7 +61,6 @@ public class PersonaActualizarActivity extends AppCompatActivity implements Adap
     public void actualizarPersona(View v) {
 
         String idPersona=editIdPersona.getText().toString();
-
         String nombre=editNombre.getText().toString();
         String apellido=editApellido.getText().toString();
         String dui=editDui.getText().toString();
@@ -69,10 +68,6 @@ public class PersonaActualizarActivity extends AppCompatActivity implements Adap
         String gradoAcademico=editGradoAcademico.getText().toString();
         String genero=editGenero.getText().toString();
         String email=editEmail.getText().toString();
-
-
-
-
         Persona p=new Persona(idPersona,idTipoPersona,nombre,apellido,dui,gradoAcademico,genero,email);
         helper.abrir();
         String estado=helper.actualizar(p);
