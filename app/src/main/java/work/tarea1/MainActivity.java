@@ -15,9 +15,15 @@ import android.widget.Toast;
 
 public class MainActivity extends ListActivity {
 
+<<<<<<< HEAD
     String[] menu = {"Tabla Asignacion", "Tabla horario", "Tabla Valoración", "Tabla Tipo Valoración", "Tabla Tipo Actividad","crear Asignacion y horario"};
     String[] activities = {"asignacionMenu", "horarioMenu", "valoracionMenu", "tipoValoracionMenu", "tipoActividadMenu" };
     DataBaseHWork BDhelper ;
+=======
+    String[] menu = {"Tabla Asignacion", "Tabla Horario","Tabla Tipo Persona","Tabla Persona","Tabla Actividad","Llenar Base de Datos"};
+    String[] activities = {"asignacionMenu", "horarioMenu","TipoPersonaMenuActivity","PersonaMenuActivity","ActividadMenuActivity" };
+    DataBaseHWork BDhelper=new DataBaseHWork(this) ;
+>>>>>>> master
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
