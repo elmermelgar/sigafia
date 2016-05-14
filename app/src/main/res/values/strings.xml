@@ -8,7 +8,7 @@
     <string name="title_activity_asignacion_insertar">AsignacionInsertarActivity</string>
     <string name="title_activity_insetar_valoracion">InsertarValoracionActivity</string>
     <string name="title_activity_asignacion_consultar">AsignacionConsultarActivity</string>
-<<<<<<< HEAD
+
     <string name="idValoración">idValoración</string>
     <string name="idTipoValoración">idTipoValoración</string>
     <string name="idAsignaciónLocal">idAsignaciónLocal</string>
@@ -70,5 +70,22 @@
 
 
     <!--Fin Actividad-->
->>>>>>> master
+    <string name="title_activity_ciclo_menu">CicloMenuActivity</string>
+    <string name="title_activity_ciclo_actualizar">CicloActualizarActivity</string>
+    <string name="title_activity_ciclo_eliminar">CicloEliminarActivity</string>
+    <string name="title_activity_ciclo_insertar">CicloInsertarActivity</string>
+    <string name="title_activity_ciclo_consultar">CicloConsultarrActivity</string>
+    <string name="insertar">Insertar</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="actualizar">Actualizar</string>
+    <string name="consultar">Consultar</string>
+    <string name="limpiar">Limpiar</string>
+    <string name="idciclo">Codigo de ciclo</string>
+    <string name="ciclo">Numero de ciclo</string>
+    <string name="iddisponibilidad">id Disponibiblidad</string>
+    <string name="idhorario">id Horario</string>
+    <string name="idlocal">id local</string>
+    <string name="disponibilidad">Disponibilidad</string>
+    <string name="opciones">Opciones</string>
+
 </resources>

@@ -2,12 +2,8 @@ package work.tarea1;
 
 import android.app.ListActivity;
 import android.content.Intent;
-import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -15,15 +11,14 @@ import android.widget.Toast;
 
 public class MainActivity extends ListActivity {
 
-<<<<<<< HEAD
-    String[] menu = {"Tabla Asignacion", "Tabla horario", "Tabla Valoración", "Tabla Tipo Valoración", "Tabla Tipo Actividad","crear Asignacion y horario"};
-    String[] activities = {"asignacionMenu", "horarioMenu", "valoracionMenu", "tipoValoracionMenu", "tipoActividadMenu" };
+    String[] menu = {"Tabla Asignacion", "Tabla horario","crear Asignacion y horario"};
+    String[] activities = {"asignacionMenu", "horarioMenu", };
     DataBaseHWork BDhelper ;
-=======
+
     String[] menu = {"Tabla Asignacion", "Tabla Horario","Tabla Tipo Persona","Tabla Persona","Tabla Actividad","Llenar Base de Datos"};
     String[] activities = {"asignacionMenu", "horarioMenu","TipoPersonaMenuActivity","PersonaMenuActivity","ActividadMenuActivity" };
     DataBaseHWork BDhelper=new DataBaseHWork(this) ;
->>>>>>> master
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

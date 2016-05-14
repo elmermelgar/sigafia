@@ -25,7 +25,7 @@
         <activity
             android:name=".CrudActivities.AsignacionConsultarActivity"
             android:label="@string/title_activity_asignacion_consultar" />
-<<<<<<< HEAD
+<<<<<<<
         <activity
             android:name=".valoracionMenu"
             android:label="@string/title_activity_valoracion_menu" />
@@ -43,7 +43,6 @@
         <activity android:name=".CrudActivities.TipoActividadActualizarActivity" />
         <activity android:name=".CrudActivities.TipoActividadEliminarActivity" />
         <activity android:name=".tipoActividadMenu"></activity>
-=======
         <activity android:name=".CrudActivities.PersonaInsertarActivity" />
         <activity android:name=".TipoPersonaMenuActivity" />
         <activity android:name=".CrudActivities.TipoPersonaInsertarActivity" />
@@ -59,7 +58,13 @@
         <activity android:name=".CrudActivities.ActividadConsultarActivity" />
         <activity android:name=".CrudActivities.ActividadActualizarActivity" />
         <activity android:name=".CrudActivities.ActividadEliminarActivity"></activity>
->>>>>>> master
+ </activity>
+        <activity android:name=".PrivetClass.CicloMenuActivity" />
+        <activity android:name=".CrudActivities.CicloInsertarActivity" />
+        <activity android:name=".CrudActivities.CicloActualizarActivity" />
+        <activity android:name=".CrudActivities.CicloEliminarActivity" />
+        <activity android:name=".CrudActivities.CicloConsultarActivity"></activity>
+
     </application>
 
 </manifest>
