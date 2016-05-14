@@ -6,4 +6,56 @@
     <string name="title_activity_asignacion_menu">asignacionMenu</string>
     <string name="title_activity_asignacion_insertar">AsignacionInsertarActivity</string>
     <string name="title_activity_asignacion_consultar">AsignacionConsultarActivity</string>
+
+    <string name="insertar">Insertar</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="actualizar">Actualizar</string>
+    <string name="consultar">Consultar</string>
+    <string name="limpiar">Limpiar</string>
+    <string name="insertar_registro">Insertar Registro</string>
+    <string name="eliminar_registro">Eliminar Registro</string>
+    <string name="consultar_registro">Consultar Registro</string>
+    <string name="actualizar_registro">Actualizar Registro</string>
+
+    <!-- Recursos de TipoPersona-->
+    <string name="title_activity_tipo_persona_menu">TipoPersonaMenuActivity</string>
+    <string name="title_activity_tipo_persona_insertar">TipoPersonaInsertarActivity</string>
+    <string name="title_activity_tipo_persona_consultar">TipoPersonaConsultarActivity</string>
+    <string name="title_activity_tipo_persona_actualizar">TipoPersonaActualizarActivity</string>
+    <string name="title_activity_tipo_persona_eliminar">TipoPersonaEliminarActivity</string>
+    <string name="codigo">Codigo</string>
+    <string name="tipo_persona">Tipo Persona:</string>
+    <string name="descripcion">Descripcion:</string>
+
+
+    <!--Fin TipoPersona -->
+
+
+    <!-- Recursos de Persona -->
+    <string name="title_activity_persona_menu">PersonaMenuActivity</string>
+    <string name="title_activity_persona_insertar">PersonaInsertarActivity</string>
+
+    <string name="id_persona">Cod. Persona:</string>
+    <string name="id_tipo_persona">Tipo Persona:</string>
+    <string name="nombre">Nombre:</string>
+    <string name="apellido">Apellido:</string>
+    <string name="dui">DUI:</string>
+    <string name="grado_academico">Grado Academico:</string>
+    <string name="genero">Genero:</string>
+    <string name="email">Email:</string>
+
+    <!--Fin Persona-->
+
+    <!-- Recursos de Actividad -->
+    <string name="title_activity_actividad_menu">ActividadMenuActivity</string>
+    <string name="title_activity_actividad_insertar">ActividadInsertarActivity</string>
+    <string name="title_activity_tipo_actividad_consultar">ActividadConsultarActivity</string>
+    <string name="title_activity_tipo_actividad_actualizar">ActividadActualizarActivity</string>
+    <string name="title_activity_tipo_actividad_eliminar">ActividadEliminarActivity</string>
+    <string name="id_actividad">Id. Actividad:</string>
+    <string name="id_tipo_actividad">Tipo Actividad:</string>
+    <string name="id_persona_responsable">Responsable:</string>
+
+
+    <!--Fin Actividad-->
 </resources>
