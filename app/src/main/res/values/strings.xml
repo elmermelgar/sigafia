@@ -18,5 +18,9 @@
     <string name="limpiar">Limpiar</string>
     <string name="idciclo">Codigo de ciclo</string>
     <string name="ciclo">Numero de ciclo</string>
-
+    <string name="iddisponibilidad">id Disponibiblidad</string>
+    <string name="idhorario">id Horario</string>
+    <string name="idlocal">id local</string>
+    <string name="disponibilidad">Disponibilidad</string>
+    <string name="opciones">Opciones</string>
 </resources>

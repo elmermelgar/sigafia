@@ -7,7 +7,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import work.tarea1.PrivetClass.Ciclo;
-import work.tarea1.PrivetClass.DataBaseHWork;
+import work.tarea1.DataBaseHWork;
 import work.tarea1.R;
 
 public class CicloConsultarActivity extends Activity {
@@ -18,6 +18,7 @@ public class CicloConsultarActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        helper=new DataBaseHWork(this);
         setContentView(R.layout.activity_ciclo_consultar);
         edtidciclo = (EditText) findViewById(R.id.edtidciclo);
         edtciclo = (EditText) findViewById(R.id.edtciclo);
@@ -32,8 +33,7 @@ public class CicloConsultarActivity extends Activity {
                     edtidciclo.getText().toString() +
                     " no encontrado", Toast.LENGTH_LONG).show();
         } else {
-            edtciclo.setText(cl.getCiclo());
-
+            edtciclo.setText(String.valueOf(cl.getCiclo()));
         }
     }
     public void limpiarTexto(View v){

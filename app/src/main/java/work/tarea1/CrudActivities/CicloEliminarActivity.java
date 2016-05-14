@@ -7,6 +7,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import work.tarea1.PrivetClass.Ciclo;
+import work.tarea1.DataBaseHWork;
 import work.tarea1.R;
 
 public class CicloEliminarActivity extends Activity {
@@ -18,8 +19,7 @@ public class CicloEliminarActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ciclo_eliminar);
         helper=new DataBaseHWork(this);
-        edtidciclo=(EditText)findViewById(R.id.editIdCiclo);
-        edtciclo=(EditText)findViewById(R.id.editciclo);
+        edtidciclo=(EditText)findViewById(R.id.editidciclo);
     }
 public void limpiar(){
     edtidciclo.setText("");
@@ -30,7 +30,6 @@ public void eliminarCiclo(View v){
     String regEliminadas;
     Ciclo c=new Ciclo();
     c.setIdciclo(Integer.valueOf(edtidciclo.getText().toString()));
-    c.setCiclo(Integer.valueOf(edtciclo.getText().toString()));
     helper.abrir();
     regEliminadas=helper.eliminar(c);
     helper.cerrar();

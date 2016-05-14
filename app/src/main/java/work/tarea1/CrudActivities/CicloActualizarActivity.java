@@ -1,5 +1,7 @@
 package work.tarea1.CrudActivities;
 
+import android.app.Activity;
+import android.app.ListActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -7,10 +9,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import work.tarea1.PrivetClass.Ciclo;
-import work.tarea1.PrivetClass.DataBaseHWork;
+import work.tarea1.DataBaseHWork;
 import work.tarea1.R;
 
-public class CicloActualizarActivity extends AppCompatActivity {
+public class CicloActualizarActivity extends Activity {
 DataBaseHWork helper;
 
     EditText edtciclo;
@@ -18,8 +20,9 @@ DataBaseHWork helper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        helper = new DataBaseHWork(this);
+
         setContentView(R.layout.activity_ciclo_actualizar);
+        helper = new DataBaseHWork(this);
         edtidciclo=(EditText)findViewById(R.id.editIdCiclo);
         edtciclo=(EditText)findViewById(R.id.editCiclo);
 

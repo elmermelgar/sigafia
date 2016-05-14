@@ -7,6 +7,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import work.tarea1.PrivetClass.Ciclo;
+import work.tarea1.DataBaseHWork;
 import work.tarea1.R;
 
 public class CicloInsertarActivity extends Activity {
@@ -17,15 +18,16 @@ public class CicloInsertarActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ciclo_insertar);
-        edtidciclo=(EditText)findViewById(R.id.editIdCiclo);
-        edtciclo=(EditText)findViewById(R.id.editCiclo);
+        helper=new DataBaseHWork(this);
+        edtidciclo=(EditText)findViewById(R.id.editidciclo);
+        edtciclo=(EditText)findViewById(R.id.editciclo);
 
 
     }
     public void insertarCiclo(View v) {
         String regInsertados;
-        Integer idciclo=Integer.valueOf(edtciclo.getText().toString());
-        Integer ciclo=Integer.valueOf(edtciclo.getText().toString());
+        int idciclo=Integer.valueOf(edtidciclo.getText().toString());
+        int ciclo=Integer.valueOf(edtciclo.getText().toString());
         Ciclo c=new Ciclo();
         c.setIdciclo(idciclo);
         c.setCiclo(ciclo);

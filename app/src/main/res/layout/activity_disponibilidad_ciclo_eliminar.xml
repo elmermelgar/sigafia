@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="1"
+    android:paddingTop="4dip"
+    >
+    <TableRow >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/iddisponibilidad"/>
+        <EditText
+            android:id="@+id/editiddisponibilidad"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+    </TableRow>
+    <TableRow >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/idlocal"/>
+        <EditText
+            android:id="@+id/editidlocal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+    </TableRow>
+
+    <TableRow >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/idhorario"/>
+        <EditText
+            android:id="@+id/editidhorario"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+    </TableRow>
+    <TableRow >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/idciclo"/>
+        <EditText
+            android:id="@+id/editidciclo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+    </TableRow>
+
+    <TableRow>
+        <Button
+            android:layout_width="wrap_content"
+            android:text="@string/eliminar"
+            android:onClick="eliminarDisponibilidadCiclo"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:text="@string/limpiar"
+            android:onClick="limpiar"/>
+    </TableRow>
+</TableLayout>

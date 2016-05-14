@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="10dp"
+    android:stretchColumns="1" >
+    <TableRow>
+        <TextView android:text="@string/iddisponibilidad" />
+        <EditText
+            android:id="@+id/editiddisponibilidad"
+            android:inputType="text" />
+    </TableRow>
+    <TableRow>
+        <TextView android:text="@string/idlocal" />
+        <EditText
+            android:id="@+id/editidlocal"
+            android:inputType="text" />
+    </TableRow>
+    <TableRow>
+        <TextView android:text="@string/idhorario" />
+        <EditText
+            android:id="@+id/editidhorario"
+            android:inputType="text" />
+    </TableRow>
+    <TableRow>
+        <TextView android:text="@string/idciclo" />
+        <EditText
+            android:id="@+id/editidciclo"
+            android:inputType="text" />
+    </TableRow>
+
+    <TableRow>
+        <TextView android:text="@string/disponibilidad" />
+        <EditText
+            android:id="@+id/editdisponibilidad"
+            android:inputType="text"
+            android:maxLength="50"/>
+    </TableRow>
+    <TableRow>
+        <Button
+            android:onClick="actualizarDisponibilidadCiclo"
+            android:text="@string/actualizar" />
+    </TableRow>
+    <TableRow>
+        <Button
+            android:onClick="limpiarTexto"
+            android:text="@string/limpiar" />
+    </TableRow>
+</TableLayout>
+

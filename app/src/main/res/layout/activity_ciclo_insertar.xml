@@ -2,23 +2,25 @@
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="30dip"
+    android:paddingTop="30dp"
     android:stretchColumns="1" >
     <TableRow>
         <TextView android:text="@string/idciclo"/>
         <EditText
-            android:id="@+id/editIdCiclo"
-            android:inputType="number"
+            android:id="@+id/editidciclo"
+            android:inputType="text"
             android:maxLength="6" />
     </TableRow>
     <TableRow>
         <TextView android:text="@string/ciclo" />
         <EditText
-            android:id="@+id/editCiclo"
-            android:inputType="number"
-            android:maxLength="2" />
+            android:id="@+id/editciclo"
+            android:inputType="text"
+            android:maxLength="6" />
     </TableRow>
-
+    <TableRow>
+        <TextView android:text="@string/opciones" />
+    </TableRow>
     <TableRow>
         <Button
             android:onClick="insertarCiclo"
