@@ -11,14 +11,14 @@ import java.util.Objects;
  * Created by fhmen on 27/04/2016.
  */
 public class asignacion {
-    private String cod_asignacion;
-    private String actividadId;
-    private String idLocal;
+    private String ID_local;
+    private String IdActividad;
+    private String idAsignacionLocal;//llave primaria
 
-    public asignacion(String cod_asignacion, String actividadId, String idLocal) {
-        this.cod_asignacion = cod_asignacion;
-        this.actividadId = actividadId;
-        this.idLocal = idLocal;
+    public asignacion(String idAsignacionLocal, String IdActividad, String ID_local) {
+        this.ID_local = ID_local;
+        this.IdActividad = IdActividad;
+        this.idAsignacionLocal = idAsignacionLocal;
     }
 
 
@@ -29,38 +29,35 @@ public class asignacion {
     @TargetApi(Build.VERSION_CODES.KITKAT)
     public ContentValues toContentValues() {
         ContentValues Data = new ContentValues();
-
-       if(Objects.equals(cod_asignacion, "0"))
-            Data.put("cod_asignacion" , cod_asignacion );
-            Data.put("actividadId" , actividadId);
-            Data.put("idLocal", idLocal);
+        Data.put("idAsignacionLocal", idAsignacionLocal);
+        Data.put("IdActividad", IdActividad);
+        Data.put("ID_local", ID_local);
 
 
         return Data;
     }
 
-
-    public String getCod_asignacion() {
-        return cod_asignacion;
+    public String getID_local() {
+        return ID_local;
     }
 
-    public void setCod_asignacion(String cod_asignacion) {
-        this.cod_asignacion = cod_asignacion;
+    public void setID_local(String ID_local) {
+        this.ID_local = ID_local;
     }
 
-    public String getActividadId() {
-        return actividadId;
+    public String getIdActividad() {
+        return IdActividad;
     }
 
-    public void setActividadId(String actividadId) {
-        this.actividadId = actividadId;
+    public void setIdActividad(String idActividad) {
+        IdActividad = idActividad;
     }
 
-    public String getIdLocal() {
-        return idLocal;
+    public String getIdAsignacionLocal() {
+        return idAsignacionLocal;
     }
 
-    public void setIdLocal(String idLocal) {
-        this.idLocal = idLocal;
+    public void setIdAsignacionLocal(String idAsignacionLocal) {
+        this.idAsignacionLocal = idAsignacionLocal;
     }
 }

@@ -11,8 +11,8 @@ import android.widget.Toast;
 
 public class MainActivity extends ListActivity {
 
-    String[] menu = {"Tabla Asignacion", "Tabla horario","crear Asignacion y horario"};
-    String[] activities = {"asignacionMenu", "horarioMenu", };
+    String[] menu = {"Tabla Asignacion", "Tabla horario", "Tabla Local", "crear Asignacion y horario"};
+    String[] activities = {"asignacionMenu", "horarioMenu", "localMenu"};
     DataBaseHWork BDhelper ;
 
     String[] menu = {"Tabla Asignacion", "Tabla Horario","Tabla Tipo Persona","Tabla Persona","Tabla Actividad","Llenar Base de Datos"};
@@ -57,7 +57,7 @@ public class MainActivity extends ListActivity {
         } else {          //CODIGO PARA LLENAR BASE DE DATOS
 
             BDhelper.abrir();
-            String tost=BDhelper.llenarBDCarnet();
+            String tost = BDhelper.llenarBD();
             BDhelper.cerrar();
             Toast.makeText(this,tost, Toast.LENGTH_SHORT).show();
 

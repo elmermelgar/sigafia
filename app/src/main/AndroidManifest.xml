@@ -9,7 +9,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,14 +18,15 @@
         </activity>
         <activity
             android:name=".asignacionMenu"
-            android:label="@string/title_activity_asignacion_menu" />
+            android:label="@string/title_activity_asignacion_menu" >
+        </activity>
         <activity
             android:name=".CrudActivities.AsignacionInsertarActivity"
-            android:label="@string/title_activity_asignacion_insertar" />
+            android:label="@string/title_activity_asignacion_insertar" >
+        </activity>
         <activity
             android:name=".CrudActivities.AsignacionConsultarActivity"
             android:label="@string/title_activity_asignacion_consultar" />
-<<<<<<<
         <activity
             android:name=".valoracionMenu"
             android:label="@string/title_activity_valoracion_menu" />
@@ -58,13 +59,54 @@
         <activity android:name=".CrudActivities.ActividadConsultarActivity" />
         <activity android:name=".CrudActivities.ActividadActualizarActivity" />
         <activity android:name=".CrudActivities.ActividadEliminarActivity"></activity>
- </activity>
+ 
         <activity android:name=".PrivetClass.CicloMenuActivity" />
         <activity android:name=".CrudActivities.CicloInsertarActivity" />
         <activity android:name=".CrudActivities.CicloActualizarActivity" />
         <activity android:name=".CrudActivities.CicloEliminarActivity" />
         <activity android:name=".CrudActivities.CicloConsultarActivity"></activity>
 
-    </application>
+ 
+        <activity
+            android:name=".CrudActivities.AsignacionBorrar"
+            android:label="@string/title_activity_asignacion_borrar" />
+        <activity
+            android:name=".CrudActivities.AsignacionMoficar"
+            android:label="@string/title_activity_asignacion_moficar" />
+        <activity
+            android:name=".horarioMenu"
+            android:label="@string/title_activity_horario_menu" />
+        <activity
+            android:name=".CrudActivities.HorarioInsertar"
+            android:label="@string/title_activity_horario_insertar" />
+        <activity
+            android:name=".CrudActivities.HorarioConsultar"
+            android:label="@string/title_activity_horario_consultar" />
+        <activity
+            android:name=".CrudActivities.HorarioActualizar"
+            android:label="@string/title_activity_horario_actualizar" />
+        <activity
+            android:name=".CrudActivities.HorarioEliminar"
+            android:label="@string/title_activity_horario_eliminar" />
+        <activity
+            android:name=".localMenu"
+            android:label="@string/title_activity_local"></activity>
+        <activity
+            android:name=".CrudActivities.LocalInsertar"
+            android:label="@string/title_activity_local_insertar"></activity>
+        <activity
+            android:name=".CrudActivities.LocalConsultar"
+            android:label="@string/title_activity_local_consultar"></activity>
+        <activity
+            android:name=".CrudActivities.LocalActualizar"
+            android:label="@string/title_activity_local_actualizar"></activity>
+        <activity
+            android:name=".CrudActivities.LocalEliminar"
+            android:label="@string/title_activity_local_eliminar"></activity>    
+
+
+
+</application>
+
 
 </manifest>

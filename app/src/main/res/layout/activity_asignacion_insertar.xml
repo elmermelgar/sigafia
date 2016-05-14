@@ -47,7 +47,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/idAsignacion"
+        android:id="@+id/idAsignacionLabel"
         android:layout_alignBaseline="@+id/textView2"
         android:layout_alignBottom="@+id/textView2"
         android:layout_alignParentRight="true"
@@ -61,8 +61,8 @@
         android:id="@+id/idActividad"
         android:layout_alignRight="@+id/idLocal"
         android:layout_alignEnd="@+id/idLocal"
-        android:layout_alignLeft="@+id/idAsignacion"
-        android:layout_alignStart="@+id/idAsignacion"
+        android:layout_alignLeft="@+id/idAsignacionLabel"
+        android:layout_alignStart="@+id/idAsignacionLabel"
         android:layout_above="@+id/idLocal"
         android:layout_marginBottom="22dp" />
 
@@ -71,8 +71,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/idLocal"
         android:layout_toRightOf="@+id/textView4"
-        android:layout_alignRight="@+id/idAsignacion"
-        android:layout_alignEnd="@+id/idAsignacion"
+        android:layout_alignRight="@+id/idAsignacionLabel"
+        android:layout_alignEnd="@+id/idAsignacionLabel"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="216dp" />
 

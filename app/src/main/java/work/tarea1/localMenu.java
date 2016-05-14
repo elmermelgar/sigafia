@@ -11,11 +11,13 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class horarioMenu extends ListActivity {
-    String[] menu = {"Insertar Horario", "Eliminar Horario", "Consultar Horario",
-            "Actualizar Horario"};
-    String[] activities = {"HorarioInsertar", "HorarioEliminar", "HorarioConsultar",
-            "HorarioActualizar"};
+public class localMenu extends ListActivity {
+
+
+    String[] menu = {"Insertar Local", "Eliminar Local", "Consultar Local",
+            "Actualizar Local"};
+    String[] activities = {"LocalInsertar", "LocalEliminar", "LocalConsultar",
+            "LocalActualizar"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +44,7 @@ public class horarioMenu extends ListActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_horario_menu, menu);
+        getMenuInflater().inflate(R.menu.menu_local, menu);
         return true;
     }
 

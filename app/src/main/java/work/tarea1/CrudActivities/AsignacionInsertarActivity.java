@@ -25,7 +25,7 @@ public class AsignacionInsertarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_asignacion_insertar);
 
         helper = new DataBaseHWork(this);
-        idAsignacion = (EditText) findViewById(R.id.idAsignacion);
+        idAsignacion = (EditText) findViewById(R.id.idAsignacionLabel);
         idActividad = (EditText) findViewById(R.id.idActividad);
         idLocal = (EditText) findViewById(R.id.idLocal);
 
@@ -38,7 +38,6 @@ public class AsignacionInsertarActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_asignacion_insertar, menu);
         return true;
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -59,7 +58,7 @@ public class AsignacionInsertarActivity extends AppCompatActivity {
 
         asignacion asignacion = new asignacion( idAsignacion.getText().toString(), idActividad.getText().toString(), idLocal.getText().toString());
         helper.abrir();
-        regInsertados = helper.insertar(asignacion);
+        regInsertados = helper.insertarAsinacion(asignacion);
         helper.cerrar();
         Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
     }

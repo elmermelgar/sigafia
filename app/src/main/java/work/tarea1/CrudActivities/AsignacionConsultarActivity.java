@@ -27,7 +27,7 @@ public class AsignacionConsultarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_asignacion_consultar);
 
         helper = new DataBaseHWork(this);
-        idAsignacion = (EditText) findViewById(R.id.idAsignacion);
+        idAsignacion = (EditText) findViewById(R.id.idAsignacionLabel);
         idLocal = (EditText) findViewById(R.id.idLocal);
         idActividad = (EditText) findViewById(R.id.idActividad);
 //        Actividad = (TextView) findViewById(R.id.Actividad);
@@ -67,10 +67,10 @@ public class AsignacionConsultarActivity extends AppCompatActivity {
                     idAsignacion.getText().toString() +
                     " no encontrado", Toast.LENGTH_LONG).show();
         else{
-            idAsignacion.setText(asignacion.getCod_asignacion());
-            idLocal.setText(asignacion.getIdLocal());
+            idAsignacion.setText(asignacion.getIdAsignacionLocal());
+            idLocal.setText(asignacion.getID_local());
            // Actividad.setText(asignacion.getSexo());
-            idActividad.setText(asignacion.getActividadId());
+            idActividad.setText(asignacion.getIdActividad());
          //   Local.setText(asignacion. valueOf(alumno.getMatganadas()));
             }
     }

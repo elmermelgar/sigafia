@@ -12,15 +12,14 @@ public class asignacionMenu extends ListActivity {
 
     String[] menu={"Insertar Asignacion" , "Eliminar Asinacion" , "Consultar Asignacion" ,
             "Actualizar Asignacion"};
-    String[] activities={"AsignacionInsertarActivity" , "AsignacionEliminarActivity" , "AsignacionConsultarActivity" ,
-            "AsignacionActualizarActivity" };
+    String[] activities = {"AsignacionInsertarActivity", "AsignacionBorrar", "AsignacionConsultarActivity",
+            "AsignacionMoficar"};
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ListView listView = getListView();
 //        listView.setBackgroundColor(Color. rgb(0, 0, 255));
-        ArrayAdapter<String> adapter = new
-                ArrayAdapter<String>(this,android.R.layout. simple_list_item_1, menu);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, menu);
         setListAdapter(adapter);
     }
     @Override
