@@ -15,8 +15,8 @@ import android.widget.Toast;
 
 public class MainActivity extends ListActivity {
 
-    String[] menu = {"Tabla Asignacion", "Tabla horario","crear Asignacion y horario"};
-    String[] activities = {"asignacionMenu", "horarioMenu", };
+    String[] menu = {"Tabla Asignacion", "Tabla horario", "Tabla Valoración", "Tabla Tipo Valoración", "Tabla Tipo Actividad","crear Asignacion y horario"};
+    String[] activities = {"asignacionMenu", "horarioMenu", "valoracionMenu", "tipoValoracionMenu", "tipoActividadMenu" };
     DataBaseHWork BDhelper ;
 
     @Override
@@ -42,7 +42,7 @@ public class MainActivity extends ListActivity {
     protected void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
         Log.i("22", "PRUEBA LOFG");
-        if (position != 2) {
+        if (position != 5) {
             String nombreValue = activities[position];
             try {
                 Class<?> clase = Class.forName("work.tarea1." + nombreValue);
