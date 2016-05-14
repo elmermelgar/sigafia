@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="10dip"
+    android:stretchColumns="1" >
+    <TableRow>
+        <TextView android:text="IdTipoActividad" />
+        <EditText
+            android:id="@+id/idTipoActividad"
+            android:inputType="text"
+            android:maxLength="7" />
+    </TableRow>
+    <TableRow>
+        <TextView android:text="Tipo de Actividad :" />
+        <EditText
+            android:id="@+id/tipoActividad"
+            android:inputType="text"
+            android:maxLength="30" />
+    </TableRow>
+
+    <TableRow>
+        <Button
+            android:onClick="limpiarTexto"
+            android:text="@string/limpiar" />
+        <Button
+            android:onClick="actualizarTipoActividad"
+            android:text="@string/actualizar" />
+    </TableRow>
+
+</TableLayout>

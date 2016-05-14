@@ -30,9 +30,10 @@ public class asignacion {
     public ContentValues toContentValues() {
         ContentValues Data = new ContentValues();
 
-       if(Objects.equals(cod_asignacion, "0")) Data.put("cod_asignacion" , cod_asignacion );
-        Data.put("actividadId" , actividadId);
-        Data.put("idLocal", idLocal);
+       if(Objects.equals(cod_asignacion, "0"))
+            Data.put("cod_asignacion" , cod_asignacion );
+            Data.put("actividadId" , actividadId);
+            Data.put("idLocal", idLocal);
 
 
         return Data;

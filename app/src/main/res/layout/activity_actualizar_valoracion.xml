@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="10dip"
+    android:stretchColumns="1" >
+    <TableRow>
+        <TextView android:text="@string/idValoración" />
+        <EditText
+            android:id="@+id/idValoración"
+            android:inputType="text"
+            android:maxLength="7" />
+    </TableRow>
+    <TableRow>
+        <TextView android:text="@string/idTipoValoración" />
+        <EditText
+            android:id="@+id/idTipoValoración"
+            android:inputType="text"
+            android:maxLength="30" />
+    </TableRow>
+    <TableRow>
+        <TextView android:text="@string/idAsignaciónLocal" />
+        <EditText
+            android:id="@+id/idAsignacionLocal"
+            android:inputType="text"
+            android:maxLength="30" />
+    </TableRow>
+    <TableRow>
+        <TextView android:text="@string/idPersona" />
+        <EditText
+            android:id="@+id/idPersona"
+            android:inputType="text"
+            android:maxLength="30" />
+    </TableRow>
+    <TableRow>
+        <TextView android:text="@string/descripciónValoración" />
+        <EditText
+            android:id="@+id/descripciónValoración"
+            android:inputType="text"
+            android:maxLength="50" />
+    </TableRow>
+    <TableRow>
+        <Button
+            android:onClick="limpiarTexto"
+            android:text="@string/limpiar" />
+        <Button
+            android:onClick="actualizarValoracion"
+            android:text="@string/actualizar" />
+    </TableRow>
+
+</TableLayout>
