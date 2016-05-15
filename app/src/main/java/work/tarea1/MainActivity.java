@@ -15,12 +15,12 @@ public class MainActivity extends ListActivity {
 
     DataBaseHWork BDhelper ;
 
-    String[] menu = {"Tabla Tipo Persona","Tabla Persona","Tabla Actividad"
-            +",Tabla Tipo Actividad","Tabla Ciclo","Tabla Disponibilidad Ciclo","Tabla Valoracion"
-            +",Tabla Tipo Valoracion","Tabla Asignacion","Tabla Local","Tabla Horario","Llenar Base de Datos"};
-    String[] activities = {"TipoPersonaMenuActivity","PersonaMenuActivity"
-            +",ActividadMenuActivity","tipoActividadMenu","CicloMenuActivity","DisponibilidadMenuActivity"
-            +",valoracionMenu","tipoValoracionMenu","asignacionMenu","localMenu","horarioMenu" };
+    String[] menu = {"Tabla Tipo Persona","Tabla Persona","Tabla Actividad",
+            "Tabla Tipo Actividad","Tabla Ciclo","Tabla Disponibilidad Ciclo","Tabla Valoracion",
+            "Tabla Tipo Valoracion","Tabla Asignacion","Tabla Local","Tabla Horario","Llenar Base de Datos"};
+    String[] activities = {"TipoPersonaMenuActivity","PersonaMenuActivity",
+            "ActividadMenuActivity","tipoActividadMenu","CicloMenuActivity","DisponibilidadMenuActivity",
+            "valoracionMenu","tipoValoracionMenu","asignacionMenu","localMenu","horarioMenu" };
 
 
 

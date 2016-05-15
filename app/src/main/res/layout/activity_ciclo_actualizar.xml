@@ -20,7 +20,7 @@
 </TableRow>
 <TableRow>
 <Button
-    android:onClick="actualizarDisponibilidadCiclo"
+    android:onClick="actualizarCiclo"
     android:text="@string/actualizar" />
 </TableRow>
 <TableRow>

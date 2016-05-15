@@ -119,7 +119,7 @@ public class DataBaseHWork {
 
                 //Tablas Ciclo y DisponibilidadCiclo
                 db.execSQL("CREATE TABLE ciclo(idciclo INTEGER PRIMARY KEY NOT NULL,ciclo INTEGER);");
-                db.execSQL("CREATE TABLE disponibilidad_ciclo(idDisponibilidad INTEGER NOT NULL,idLocal INTEGER NOT NULL,idHorario INTEGER NOT NULL,idciclo INTEGER NOT NULL,disponibilidad Varchar(50),PRIMARY \n" + "KEY(idDisponibilidad,idLocal,idHorario,idciclo));");
+                db.execSQL("CREATE TABLE disponibilidad_ciclo(idDisponibilidad INTEGER NOT NULL,idLocal INTEGER NOT NULL,idHorario INTEGER NOT NULL,idciclo INTEGER NOT NULL,disponibilidad Varchar(50),PRIMARY KEY(idDisponibilidad,idLocal,idHorario,idciclo));");
                 //Creacion de las tabla horario
                 db.execSQL("CREATE TABLE 'HORARIO'  ('IDHORARIO' INTEGER not null, 'HORA_INICIO' DATE, 'HORA_FIN' DATE, constraint PK_HORARIO primary key (IDHORARIO))");
 
@@ -160,8 +160,8 @@ public class DataBaseHWork {
             abrir();
             try {
 
-                db.execSQL("DELETE FROM asignacion");
-                db.execSQL("insert into asignacion (actividadId,idLocal) values (2,3)");
+                db.execSQL("DELETE FROM ASIGNACION_LOCALES");
+                //db.execSQL("insert into ASIGNACION_LOCALES (actividadId,idLocal) values (2,3)");
 
                 db.execSQL("DELETE FROM ciclo");
                 final int[] vidciclos ={1,2,3};

@@ -52,6 +52,7 @@
         <activity android:name=".CrudActivities.TipoPersonaEliminarActivity" />
         <activity android:name=".PersonaMenuActivity" />
         <activity android:name=".CrudActivities.PersonaConsultarActivity" />
+
         <activity android:name=".CrudActivities.PersonaActualizarActivity" />
         <activity android:name=".CrudActivities.PersonaEliminarActivity" />
         <activity android:name=".ActividadMenuActivity" />
@@ -66,6 +67,11 @@
         <activity android:name=".CrudActivities.CicloEliminarActivity" />
         <activity android:name=".CrudActivities.CicloConsultarActivity"></activity>
 
+        <activity android:name=".DisponibilidadMenuActivity" />
+        <activity android:name=".CrudActivities.DisponibilidadCicloActualizarActivity" />
+        <activity android:name=".CrudActivities.DisponibilidadCicloConsultarActivity" />
+        <activity android:name=".CrudActivities.DisponibilidadCicloEliminarActivity" />
+        <activity android:name=".CrudActivities.DisponibilidadCicloInsertarActivity"></activity>
  
         <activity
             android:name=".CrudActivities.AsignacionBorrar"
