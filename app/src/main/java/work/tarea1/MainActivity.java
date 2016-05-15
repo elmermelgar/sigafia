@@ -9,15 +9,19 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+
 public class MainActivity extends ListActivity {
 
-    String[] menu = {"Tabla Asignacion", "Tabla horario", "Tabla Local", "crear Asignacion y horario"};
-    String[] activities = {"asignacionMenu", "horarioMenu", "localMenu"};
+
     DataBaseHWork BDhelper ;
 
-    String[] menu = {"Tabla Asignacion", "Tabla Horario","Tabla Tipo Persona","Tabla Persona","Tabla Actividad","Llenar Base de Datos"};
-    String[] activities = {"asignacionMenu", "horarioMenu","TipoPersonaMenuActivity","PersonaMenuActivity","ActividadMenuActivity" };
-    DataBaseHWork BDhelper=new DataBaseHWork(this) ;
+    String[] menu = {"Tabla Tipo Persona","Tabla Persona","Tabla Actividad"
+            +",Tabla Tipo Actividad","Tabla Ciclo","Tabla Disponibilidad Ciclo","Tabla Valoracion"
+            +",Tabla Tipo Valoracion","Tabla Asignacion","Tabla Local","Tabla Horario","Llenar Base de Datos"};
+    String[] activities = {"TipoPersonaMenuActivity","PersonaMenuActivity"
+            +",ActividadMenuActivity","tipoActividadMenu","CicloMenuActivity","DisponibilidadMenuActivity"
+            +",valoracionMenu","tipoValoracionMenu","asignacionMenu","localMenu","horarioMenu" };
+
 
 
     @Override
@@ -43,7 +47,7 @@ public class MainActivity extends ListActivity {
     protected void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
         Log.i("22", "PRUEBA LOFG");
-        if (position != 5) {
+        if (position != 11) {
             String nombreValue = activities[position];
             try {
                 Class<?> clase = Class.forName("work.tarea1." + nombreValue);

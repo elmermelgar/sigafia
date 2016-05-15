@@ -60,7 +60,7 @@
         <activity android:name=".CrudActivities.ActividadActualizarActivity" />
         <activity android:name=".CrudActivities.ActividadEliminarActivity"></activity>
  
-        <activity android:name=".PrivetClass.CicloMenuActivity" />
+        <activity android:name=".CicloMenuActivity" />
         <activity android:name=".CrudActivities.CicloInsertarActivity" />
         <activity android:name=".CrudActivities.CicloActualizarActivity" />
         <activity android:name=".CrudActivities.CicloEliminarActivity" />

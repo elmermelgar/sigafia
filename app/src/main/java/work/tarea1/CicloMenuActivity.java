@@ -8,8 +8,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import work.tarea1.R;
-
 public class CicloMenuActivity extends ListActivity {
 String[] menu={"Insertar Registro","Eliminar Registro","Consultar Registro",
         "Actualizar Registro"};

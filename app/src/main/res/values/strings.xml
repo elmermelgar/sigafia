@@ -4,21 +4,20 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_asignacion_menu">asignacionMenu</string>
-    <string name="title_activity_valoracion_menu">valoracionMenu</string>
     <string name="title_activity_asignacion_insertar">AsignacionInsertarActivity</string>
-    <string name="title_activity_insetar_valoracion">InsertarValoracionActivity</string>
     <string name="title_activity_asignacion_consultar">AsignacionConsultarActivity</string>
 
+    <!--Valoracion-->
+    <string name="title_activity_valoracion_menu">valoracionMenu</string>
+    <string name="title_activity_insetar_valoracion">InsertarValoracionActivity</string>
     <string name="idValoración">idValoración</string>
     <string name="idTipoValoración">idTipoValoración</string>
     <string name="idAsignaciónLocal">idAsignaciónLocal</string>
     <string name="idPersona">idPersona</string>
     <string name="descripciónValoración">Descripción Valoración</string>
-    <string name="consultar">Consultar</string>
-    <string name="actualizar">Actualizar</string>
-    <string name="limpiar">Limpiar</string>
-=======
 
+
+    <!--CRUD-->
     <string name="insertar">Insertar</string>
     <string name="eliminar">Eliminar</string>
     <string name="actualizar">Actualizar</string>
@@ -70,16 +69,14 @@
 
 
     <!--Fin Actividad-->
+
+    <!--Ciclo y DisponibilidadCiclo-->
+
     <string name="title_activity_ciclo_menu">CicloMenuActivity</string>
     <string name="title_activity_ciclo_actualizar">CicloActualizarActivity</string>
     <string name="title_activity_ciclo_eliminar">CicloEliminarActivity</string>
     <string name="title_activity_ciclo_insertar">CicloInsertarActivity</string>
     <string name="title_activity_ciclo_consultar">CicloConsultarrActivity</string>
-    <string name="insertar">Insertar</string>
-    <string name="eliminar">Eliminar</string>
-    <string name="actualizar">Actualizar</string>
-    <string name="consultar">Consultar</string>
-    <string name="limpiar">Limpiar</string>
     <string name="idciclo">Codigo de ciclo</string>
     <string name="ciclo">Numero de ciclo</string>
     <string name="iddisponibilidad">id Disponibiblidad</string>
@@ -87,5 +84,30 @@
     <string name="idlocal">id local</string>
     <string name="disponibilidad">Disponibilidad</string>
     <string name="opciones">Opciones</string>
+
+    <!--Fin Ciclo y DisponibilidadCiclo-->
+
+
+    <string name="title_activity_asignacion_borrar">AsignacionBorrar</string>
+    <string name="title_activity_asignacion_moficar">AsignacionMoficar</string>
+    <string name="title_activity_horario_menu">horarioMenu</string>
+    <string name="title_activity_horario_insertar">HorarioInsertar</string>
+    <string name="title_activity_horario_consultar">HorarioConsultar</string>
+    <string name="title_activity_horario_actualizar">HorarioActualizar</string>
+    <string name="title_activity_horario_eliminar">HorarioEliminar</string>
+
+    <string-array name="Games">
+        <item>League of Legends</item>
+        <item>Diablo III</item>
+        <item>God of War</item>
+        <item>Halo 4</item>
+        <item>StarCraft II</item>
+    </string-array>
+    <string name="title_activity_local">local</string>
+    <string name="title_activity_local_insertar">LocalInsertar</string>
+    <string name="title_activity_local_consultar">LocalConsultar</string>
+    <string name="title_activity_local_actualizar">LocalActualizar</string>
+    <string name="title_activity_local_eliminar">LocalEliminar</string>
+
 
 </resources>

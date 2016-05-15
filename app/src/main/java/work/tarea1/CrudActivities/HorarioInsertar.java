@@ -35,10 +35,10 @@ public class HorarioInsertar extends AppCompatActivity {
         horarioFinal = (EditText) findViewById(R.id.horarioFinal);
 
         //codigo de spiner quemado con un string
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+       /* Spinner spinner = (Spinner) findViewById(R.id.spinner);
         adapter = ArrayAdapter.createFromResource(this, R.array.Games, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
+        spinner.setAdapter(adapter);*/
 
     }
 

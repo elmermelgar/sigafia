@@ -47,7 +47,7 @@ public class ActividadInsertarActivity extends AppCompatActivity implements Adap
         if(spinner.getId() == R.id.spinner_tipo_actividad)
         {
             String filter = parent.getItemAtPosition(position).toString();
-            idTipoActividad=(Integer)helper.getValueSelectedSpineer("id_tipo_actividad","tipo_actividad","TipoActividad",false,filter);
+            idTipoActividad=(Integer)helper.getValueSelectedSpineer("idTipoActividad","tipoActividad","tipoActividad",false,filter);
             // Showing selected spinner item
             /*Toast.makeText(parent.getContext(), "You selected: " + idTipoActividad,
                     Toast.LENGTH_LONG).show();*/
@@ -68,7 +68,7 @@ public class ActividadInsertarActivity extends AppCompatActivity implements Adap
     }
 
     private void loadSpinnerData(){
-        spTipoActividad.setAdapter(helper.prepareSpinner(this,"TipoActividad", "tipo_actividad", "id_tipo_actividad"));
+        spTipoActividad.setAdapter(helper.prepareSpinner(this,"tipoActividad", "tipoActividad", "idTipoActividad"));
         spPersonaResponsable.setAdapter(helper.prepareSpinner(this,"Persona", "nombre", "id_persona"));
     }
 
