@@ -11,8 +11,8 @@ import android.widget.ListView;
 
 public class PersonaMenuActivity extends ListActivity {
 
-    String[] menu={"Insertar Registro" , "Consultar Registro" , "Actualizar Registro" ,
-            "Eliminar Registro"};
+    String[] menu={"Insertar Persona" , "Consultar Persona" , "Actualizar Persona" ,
+            "Eliminar Persona"};
     String[]
             activities={"PersonaInsertarActivity" , "PersonaConsultarActivity", "PersonaActualizarActivity" ,
             "PersonaEliminarActivity" };
@@ -22,7 +22,7 @@ public class PersonaMenuActivity extends ListActivity {
         setListAdapter( new ArrayAdapter<String>(this, android.R.layout. simple_list_item_1,
                 menu));
         ListView listView = getListView();
-        listView.setBackgroundColor(Color.CYAN);
+        //listView.setBackgroundColor(Color.CYAN);
         ArrayAdapter<String> adapter = new
                 ArrayAdapter<String>(this,android.R.layout. simple_list_item_1, menu);
         setListAdapter(adapter);
@@ -31,7 +31,7 @@ public class PersonaMenuActivity extends ListActivity {
     protected void onListItemClick(ListView l,View v, int position, long id){
         super.onListItemClick(l, v, position, id);
         String nombreValue=activities[position];
-        l.getChildAt(position).setBackgroundColor(Color.CYAN);
+        //l.getChildAt(position).setBackgroundColor(Color.CYAN);
         try{
             Class<?> clase=Class. forName("work.tarea1.CrudActivities."+nombreValue);
             Intent inte = new Intent(this,clase);

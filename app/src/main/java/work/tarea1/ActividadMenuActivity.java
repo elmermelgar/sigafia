@@ -13,8 +13,8 @@ import work.tarea1.R;
 
 public class ActividadMenuActivity extends ListActivity {
 
-    String[] menu={"Insertar Registro" , "Consultar Registro" , "Actualizar Registro" ,
-            "Eliminar Registro"};
+    String[] menu={"Insertar Actividad" , "Consultar Actividad" , "Actualizar Actividad" ,
+            "Eliminar Actividad"};
     String[]
             activities={"ActividadInsertarActivity" , "ActividadConsultarActivity", "ActividadActualizarActivity" ,
             "ActividadEliminarActivity" };
@@ -23,7 +23,7 @@ public class ActividadMenuActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setListAdapter( new ArrayAdapter<String>(this, android.R.layout. simple_list_item_1, menu));
         ListView listView = getListView();
-        listView.setBackgroundColor(Color.CYAN);
+        //listView.setBackgroundColor(Color.CYAN);
         ArrayAdapter<String> adapter = new
                 ArrayAdapter<String>(this,android.R.layout. simple_list_item_1, menu);
         setListAdapter(adapter);
@@ -32,7 +32,7 @@ public class ActividadMenuActivity extends ListActivity {
     protected void onListItemClick(ListView l,View v, int position, long id){
         super.onListItemClick(l, v, position, id);
         String nombreValue=activities[position];
-        l.getChildAt(position).setBackgroundColor(Color.CYAN);
+        //l.getChildAt(position).setBackgroundColor(Color.CYAN);
         try{
             Class<?> clase=Class. forName("work.tarea1.CrudActivities."+nombreValue);
             Intent inte = new Intent(this,clase);

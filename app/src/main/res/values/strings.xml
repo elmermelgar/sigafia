@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Tarea1</string>
 
-    <string name="hello_world">Hello world!</string>
+    <string name="hello_world">Gestión de Actividades-FIA</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_asignacion_menu">asignacionMenu</string>
     <string name="title_activity_asignacion_insertar">AsignacionInsertarActivity</string>

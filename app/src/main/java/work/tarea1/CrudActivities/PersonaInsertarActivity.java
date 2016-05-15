@@ -50,8 +50,8 @@ public class PersonaInsertarActivity extends AppCompatActivity implements Adapte
         String filter = parent.getItemAtPosition(position).toString();
         idTipoPersona=(String)helper.getValueSelectedSpineer("codigo","tipo_persona","TipoPersona",true,filter);
         // Showing selected spinner item
-        Toast.makeText(parent.getContext(), "You selected: " +idTipoPersona,
-                Toast.LENGTH_LONG).show();
+        /*Toast.makeText(parent.getContext(), "You selected: " +idTipoPersona,
+                Toast.LENGTH_LONG).show();*/
     }
 
     @Override
