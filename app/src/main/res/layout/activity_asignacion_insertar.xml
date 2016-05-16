@@ -29,18 +29,17 @@
         android:layout_height="wrap_content"
         android:text="Id de Actividad :"
         android:id="@+id/textView3"
-        android:layout_marginTop="33dp"
-        android:layout_below="@+id/textView2"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignLeft="@+id/button"
+        android:layout_alignStart="@+id/button"
+        android:layout_above="@+id/textView4"
+        android:layout_alignTop="@+id/spinnerAsignacionInsert" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Id Local :"
         android:id="@+id/textView4"
-        android:layout_marginTop="41dp"
-        android:layout_below="@+id/textView3"
+        android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -48,45 +47,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/idAsignacionLabel"
-        android:layout_alignBaseline="@+id/textView2"
         android:layout_alignBottom="@+id/textView2"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:layout_alignLeft="@+id/textView"
-        android:layout_alignStart="@+id/textView" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/idActividad"
-        android:layout_alignRight="@+id/idLocal"
-        android:layout_alignEnd="@+id/idLocal"
-        android:layout_alignLeft="@+id/idAsignacionLabel"
-        android:layout_alignStart="@+id/idAsignacionLabel"
-        android:layout_above="@+id/idLocal"
-        android:layout_marginBottom="22dp" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/idLocal"
-        android:layout_toRightOf="@+id/textView4"
-        android:layout_alignRight="@+id/idAsignacionLabel"
-        android:layout_alignEnd="@+id/idAsignacionLabel"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="216dp" />
+        android:layout_alignStart="@+id/textView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Guardar"
         android:id="@+id/button"
-        android:layout_below="@+id/textView4"
-        android:layout_toLeftOf="@+id/idActividad"
-        android:layout_toStartOf="@+id/idActividad"
-        android:layout_marginTop="50dp"
         android:onClick="insertarAsignacion"
-        />
+        android:layout_below="@+id/spinnerAsigancionLocal"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -94,8 +69,28 @@
         android:layout_height="wrap_content"
         android:text="Limpiar"
         android:id="@+id/button2"
+        android:onClick="limpiarTexto"
         android:layout_alignTop="@+id/button"
-        android:layout_alignRight="@+id/idLocal"
-        android:layout_alignEnd="@+id/idLocal"
-        android:onClick="limpiarTexto"/>
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerAsignacionInsert"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="33dp"
+        android:layout_alignLeft="@+id/idAsignacionLabel"
+        android:layout_alignStart="@+id/idAsignacionLabel" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerAsigancionLocal"
+        android:layout_alignBaseline="@+id/textView4"
+        android:layout_alignBottom="@+id/textView4"
+        android:layout_alignLeft="@+id/spinnerAsignacionInsert"
+        android:layout_alignStart="@+id/spinnerAsignacionInsert" />
 </RelativeLayout>
