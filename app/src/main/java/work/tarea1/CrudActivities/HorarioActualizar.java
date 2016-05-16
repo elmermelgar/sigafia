@@ -89,4 +89,11 @@ public class HorarioActualizar extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
+    public void limpiarTexto(View v) {
+        idHorario.setText("");
+        horarioInicio.setText("");
+        horarioFinal.setText("");
+    }
+
 }

@@ -86,4 +86,12 @@ public class AsignacionMoficar extends AppCompatActivity {
 
         }
     }
+
+    public void limpiarTexto(View v) {
+        idAsignacion.setText("");
+        idLocal.setText("");
+        idActividad.setText("");
+
+    }
+
 }

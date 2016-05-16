@@ -97,6 +97,7 @@
         android:id="@+id/button2"
         android:layout_alignTop="@+id/button"
         android:layout_alignRight="@+id/horarioFinal"
-        android:layout_alignEnd="@+id/horarioFinal" />
-
+        android:layout_alignEnd="@+id/horarioFinal"
+        android:onClick="limpiarTexto"
+        />
 </RelativeLayout>

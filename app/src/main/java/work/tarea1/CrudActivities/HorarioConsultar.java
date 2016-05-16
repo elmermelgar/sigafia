@@ -57,6 +57,12 @@ public class HorarioConsultar extends AppCompatActivity {
 
 
 
+    public void limpiarTexto(View v) {
+        idHorario.setText("");
+        horarioInicio.setText("");
+        horarioFinal.setText("");
+    }
+
 
 
 

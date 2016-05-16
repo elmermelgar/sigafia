@@ -97,7 +97,9 @@
         android:id="@+id/button2"
         android:layout_alignTop="@+id/button"
         android:layout_alignRight="@+id/capacidad"
-        android:layout_alignEnd="@+id/capacidad" />
+        android:layout_alignEnd="@+id/capacidad"
+        android:onClick="limpiarTexto"
+        />
 
 
 </RelativeLayout>

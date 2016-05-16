@@ -62,4 +62,17 @@ public class AsignacionInsertarActivity extends AppCompatActivity {
         helper.cerrar();
         Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
     }
+
+    public void limpiarTexto(View v) {
+        idAsignacion.setText("");
+        idLocal.setText("");
+        idActividad.setText("");
+
+    }
+
+
+
+
+
+
 }

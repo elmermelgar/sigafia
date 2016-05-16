@@ -51,20 +51,26 @@ public class HorarioInsertar extends AppCompatActivity {
         helper.cerrar();
         Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+    public void limpiarTexto(View v) {
+        idHorario.setText("");
+        horarioInicio.setText("");
+        horarioFinal.setText("");
+    }
+
+
+
+
+
+
+
+
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

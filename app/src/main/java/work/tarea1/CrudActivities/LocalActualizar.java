@@ -82,4 +82,15 @@ public class LocalActualizar extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
+
+
+    public void limpiarTexto(View v) {
+        idLocal.setText("");
+        direccion.setText("");
+        capacidad.setText("");
+    }
+
+
 }

@@ -74,4 +74,15 @@ public class AsignacionConsultarActivity extends AppCompatActivity {
          //   Local.setText(asignacion. valueOf(alumno.getMatganadas()));
             }
     }
+
+
+    public void limpiarTexto(View v) {
+        idAsignacion.setText("");
+        idLocal.setText("");
+        idActividad.setText("");
+
+    }
+
+
+
 }

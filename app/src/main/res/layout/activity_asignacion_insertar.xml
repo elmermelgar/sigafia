@@ -96,5 +96,6 @@
         android:id="@+id/button2"
         android:layout_alignTop="@+id/button"
         android:layout_alignRight="@+id/idLocal"
-        android:layout_alignEnd="@+id/idLocal" />
+        android:layout_alignEnd="@+id/idLocal"
+        android:onClick="limpiarTexto"/>
 </RelativeLayout>
