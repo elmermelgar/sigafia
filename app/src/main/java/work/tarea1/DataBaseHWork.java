@@ -130,7 +130,7 @@ public class DataBaseHWork {
                 db.execSQL("create index '3_FK' on ASIGNACION_LOCALES (IDACTIVIDAD ASC );");
                 db.execSQL("create index '4_FK' on ASIGNACION_LOCALES (ID_LOCAL ASC);");
 
-                db.execSQL("create table LOCAL (ID_LOCAL  INTEGER not null, DIRECCION VARCHAR2(100),CAPACIDAD INTEGER,constraint PK_LOCAL primary key (ID_LOCAL));");
+                db.execSQL("create table LOCAL (ID_LOCAL  VARCHAR2(10) not null, DIRECCION VARCHAR2(100),CAPACIDAD INTEGER,constraint PK_LOCAL primary key (ID_LOCAL));");
 
                 //trigger para borrar las valoraciones si borracmos la asignacion de local
                 db.execSQL("CREATE TRIGGER 'Delete_Valoracion_trigger' AFTER DELETE ON ASIGNACION_LOCALES FOR EACH ROW BEGIN DELETE FROM valoracion WHERE idAsignacionLocal = OLD.idAsignacionLocal; END;");
@@ -186,9 +186,24 @@ public class DataBaseHWork {
                 db.execSQL("INSERT INTO Persona(id_persona,id_tipo_persona,nombre,apellido,dui,grado_academico,genero,email) values('cm98001','d115','Cesar','Milan','049804221','ingeniero','M','cesar.milan@gmail.com') ");
 
                 db.execSQL("DELETE FROM tipoActividad");
+
                 db.execSQL("INSERT INTO tipoActividad(tipoActividad) values('Clase') ");
                 db.execSQL("INSERT INTO tipoActividad(tipoActividad) values('Discusión') ");
                 db.execSQL("INSERT INTO tipoActividad(tipoActividad) values('Conferencia') ");
+
+
+                db.execSQL("INSERT INTO 'LOCAL' VALUES('C-31','Av universitaria,Fira',50);");
+                db.execSQL("INSERT INTO 'LOCAL' VALUES('LIB-301','Biblioteca de la FIA',99);");
+                db.execSQL("INSERT INTO 'LOCAL' VALUES('B-11','Edificio B, FIA',99);");
+
+
+                db.execSQL("INSERT INTO 'Actividad' VALUES(1,1,'1','Clases de ciclo normales');");
+                db.execSQL("INSERT INTO 'Actividad' VALUES(2,1,'2','Discucion');");
+                db.execSQL("INSERT INTO 'Actividad' VALUES(3,2,'3','Ponencia');");
+
+
+
+
             } catch (Exception e) {
                 Log.d("my", e.toString());
                 return "Error al guardar";
@@ -866,18 +881,34 @@ public class DataBaseHWork {
 
     public String insertarAsinacion(asignacion asignacion) {
         long contador = 0;
+        Boolean integridad =false ;
         String regInsertados = "Registro Insertado Nº= ";
+
+
         //aqui incertaremos la integridad referencial
-
-
-
-
-        contador = db.insert("ASIGNACION_LOCALES", null, asignacion.toContentValues());
-        if (contador == -1 || contador == 0) {
-            regInsertados = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
-        } else {
-            regInsertados = regInsertados + contador;
+        String[] id2 = {asignacion.getID_local()};
+        String[] id1 = {asignacion.getIdActividad()};
+//abrir();
+        Cursor cursor1 = db.query( "Actividad" , null, "id_actividad = ?" , id1, null,
+                null, null);
+        Cursor cursor2 = db.query( "LOCAL", null, "ID_LOCAL = ?" , id2,
+                null, null, null);
+        if(cursor1.moveToFirst() && cursor2.moveToFirst()){
+            integridad = true;
         }
+        //terminamos de verificar la integridad
+        if(integridad){
+            contador = db.insert("ASIGNACION_LOCALES", null, asignacion.toContentValues());
+            if (contador == -1 || contador == 0) {
+                regInsertados = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
+            } else {
+                regInsertados = regInsertados + contador;
+            }
+        }else{
+            regInsertados = "Error de integridad.";
+        }
+
+
         return regInsertados;
 
     }
