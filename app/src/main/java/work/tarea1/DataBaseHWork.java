@@ -132,6 +132,8 @@ public class DataBaseHWork {
 
                 db.execSQL("create table LOCAL (ID_LOCAL  INTEGER not null, DIRECCION VARCHAR2(100),CAPACIDAD INTEGER,constraint PK_LOCAL primary key (ID_LOCAL));");
 
+                //trigger para borrar las valoraciones si borracmos la asignacion de local
+                db.execSQL("CREATE TRIGGER 'Delete_Valoracion_trigger' AFTER DELETE ON ASIGNACION_LOCALES FOR EACH ROW BEGIN DELETE FROM valoracion WHERE idAsignacionLocal = OLD.idAsignacionLocal; END;");
 
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -865,6 +867,11 @@ public class DataBaseHWork {
     public String insertarAsinacion(asignacion asignacion) {
         long contador = 0;
         String regInsertados = "Registro Insertado Nº= ";
+        //aqui incertaremos la integridad referencial
+
+
+
+
         contador = db.insert("ASIGNACION_LOCALES", null, asignacion.toContentValues());
         if (contador == -1 || contador == 0) {
             regInsertados = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
