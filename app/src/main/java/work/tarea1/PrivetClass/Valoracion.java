@@ -14,11 +14,11 @@ public class Valoracion {
 
     private int idValoración;
     private int idTipoValoración;
-    private int idPersona;
+    private String idPersona;
     private String descripciónValoración;
     private int idAsignaciónLocal;
 
-    public Valoracion(int idValoración, int idTipoValoración, int idAsignaciónLocal, int idPersona, String descripciónValoración) {
+    public Valoracion(int idValoración, int idTipoValoración, int idAsignaciónLocal, String idPersona, String descripciónValoración) {
         this.idValoración = idValoración;
         this.idTipoValoración = idTipoValoración;
         this.idPersona = idPersona;
@@ -40,7 +40,7 @@ public class Valoracion {
         return idTipoValoración;
     }
 
-    public int getIdPersona() {
+    public String getIdPersona() {
         return idPersona;
     }
 
@@ -56,7 +56,7 @@ public class Valoracion {
         this.idTipoValoración = idTipoValoración;
     }
 
-    public void setIdPersona(int idPersona) {
+    public void setIdPersona(String idPersona) {
         this.idPersona = idPersona;
     }
 

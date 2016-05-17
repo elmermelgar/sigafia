@@ -38,7 +38,7 @@ public class ActualizarValoracionActivity extends AppCompatActivity {
         valoracion.setIdValoración(Integer.parseInt(idValoración.getText().toString()));
         valoracion.setIdTipoValoración(Integer.parseInt(idTipoValoración.getText().toString()));
         valoracion.setIdAsignaciónLocal(Integer.parseInt(idAsignaciónLocal.getText().toString()));
-        valoracion.setIdPersona(Integer.parseInt(idPersona.getText().toString()));
+        valoracion.setIdPersona(idPersona.getText().toString());
         valoracion.setDescripciónValoración(descripciónValoración.getText().toString());
 
         helper.abrir();

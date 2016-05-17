@@ -29,7 +29,7 @@ import work.tarea1.PrivetClass.*;
 public class DataBaseHWork {
 
     private HashMap<String, String> spinnerTipoPersonaMap;
-
+    private HashMap<String, String> spinnerTipoValoracionMap;
     //se crean los campos que seran las columnas de nuestra base,solo sirven para hacacer referencia
 
 
@@ -200,6 +200,10 @@ public class DataBaseHWork {
                 db.execSQL("INSERT INTO 'Actividad' VALUES(1,1,'1','Clases de ciclo normales');");
                 db.execSQL("INSERT INTO 'Actividad' VALUES(2,1,'2','Discucion');");
                 db.execSQL("INSERT INTO 'Actividad' VALUES(3,2,'3','Ponencia');");
+
+                db.execSQL("INSERT INTO 'tipoValoracion' VALUES(1,'Excelente','Entre 9 y 10');");
+                db.execSQL("INSERT INTO 'tipoValoracion' VALUES(2,'Muy Bueno','Entre 7 y 8');");
+                db.execSQL("INSERT INTO 'tipoValoracion' VALUES(3,'Bueno','Entre 5 y 6');");
 
 
 
@@ -724,8 +728,8 @@ public class DataBaseHWork {
             Valoracion valoracion = new Valoracion();
             valoracion.setIdValoración(cursor.getInt(0));
             valoracion.setIdTipoValoración(cursor.getInt(1));
-            valoracion.setIdPersona(cursor.getInt(2));
-            valoracion.setIdAsignaciónLocal(cursor.getInt(3));
+            valoracion.setIdPersona(cursor.getString(3));
+            valoracion.setIdAsignaciónLocal(cursor.getInt(2));
             valoracion.setDescripciónValoración(cursor.getString(4));
             return valoracion;
         }else{ return null;
