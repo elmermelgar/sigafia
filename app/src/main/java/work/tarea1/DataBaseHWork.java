@@ -88,6 +88,17 @@ public class DataBaseHWork {
         return spinnerTipoPersonaMap;
     }
 
+    public Boolean existeUser(String user, String pass) {
+        String[] camposLogin = new String[] {"idUusauro", "nombreUsuario", "clave"};
+        String[] id = {user,pass};
+        Cursor cursor = db.query("usuario", camposLogin, "nombreUsuario=? and clave =?", id, null, null, null);
+        if (cursor.moveToFirst()) {
+            return true;
+        }
+
+        return false;
+    }
+
     private static class DatabaseHelper extends SQLiteOpenHelper {
         //private static final String BASE_DATOS = "tarea1.s3db" ;
         private static final String BASE_DATOS = "tarea1.s3db";
@@ -134,6 +145,23 @@ public class DataBaseHWork {
 
                 //trigger para borrar las valoraciones si borracmos la asignacion de local
                 db.execSQL("CREATE TRIGGER 'Delete_Valoracion_trigger' AFTER DELETE ON ASIGNACION_LOCALES FOR EACH ROW BEGIN DELETE FROM valoracion WHERE idAsignacionLocal = OLD.idAsignacionLocal; END;");
+
+                //creacion de las tablas de Seguridad
+                db.execSQL("CREATE TABLE 'usuario' ('idUusauro' INTEGER PRIMARY KEY UNIQUE NOT NULL, 'nombreUsuario' VARCHAR NOT NULL, 'clave' VARCHAR NOT NULL);");
+                db.execSQL("CREATE TABLE 'opcionCrud' ('idOpcion' INTEGER PRIMARY KEY NOT NULL, 'desOpcion' VARCHAR, 'numCrud' INTEGER);");
+                db.execSQL("CREATE TABLE 'accesoUsuario' ('idOpcion' INTEGER NOT NULL, 'idUsuario' INTEGER NOT NULL);");
+
+
+                //datos necesarios para el logueo
+                db.execSQL("INSERT INTO 'usuario' VALUES(1,'fer','fer');");
+                db.execSQL("INSERT INTO 'usuario' VALUES(2,'roberto','roberto');");
+                db.execSQL("INSERT INTO 'opcionCrud' VALUES(1,'Menu Horario',0);");
+                db.execSQL("INSERT INTO 'opcionCrud' VALUES(2,'Horario actualizar',1);");
+                db.execSQL("INSERT INTO 'opcionCrud' VALUES(3,'Horario Elminar',2);");
+                db.execSQL("INSERT INTO 'accesoUsuario' VALUES(0,1);");
+                db.execSQL("INSERT INTO 'accesoUsuario' VALUES(1,1);");
+                db.execSQL("INSERT INTO 'accesoUsuario' VALUES(3,1);");
+                db.execSQL("INSERT INTO 'accesoUsuario' VALUES(4,1);");
 
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -206,6 +234,7 @@ public class DataBaseHWork {
                 db.execSQL("INSERT INTO 'tipoValoracion' VALUES(1,'Excelente','Entre 9 y 10');");
                 db.execSQL("INSERT INTO 'tipoValoracion' VALUES(2,'Muy Bueno','Entre 7 y 8');");
                 db.execSQL("INSERT INTO 'tipoValoracion' VALUES(3,'Bueno','Entre 5 y 6');");
+
 
 
 
