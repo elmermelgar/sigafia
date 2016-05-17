@@ -108,6 +108,7 @@
     <string name="title_activity_local_consultar">LocalConsultar</string>
     <string name="title_activity_local_actualizar">LocalActualizar</string>
     <string name="title_activity_local_eliminar">LocalEliminar</string>
+    <string name="title_activity_log_ing">identificate</string>
 
 
 </resources>
