@@ -31,12 +31,15 @@ EditText edtdisponibilidad;
     }
  public void consultarDisponibilidad(View v){
         helper.abrir();
-        DisponibilidadCiclo disp=helper.consultarDisponibilidad(edtiddisponibilidad.getText().toString(),edtidhorario.getText().toString(),edtidlocal.getText().toString(),edtidciclo.getText().toString());
+        DisponibilidadCiclo disp=helper.consultarDisponibilidad(edtiddisponibilidad.getText().toString());
         helper.cerrar();
         if(disp == null){
             Toast.makeText(this, "Disponibilidad no registrada",
                     Toast.LENGTH_LONG).show();}
         else{
+            edtidlocal.setText(disp.getIdLocal());
+            edtidhorario.setText(Integer.toString(disp.getIdHorario()));
+            edtidciclo.setText(Integer.toString(disp.getIdciclo()));
             edtdisponibilidad.setText(disp.getDisponibilidad());
         }
     }

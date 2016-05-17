@@ -23,18 +23,18 @@ DataBaseHWork helper;
         setContentView(R.layout.activity_disponibilidad_ciclo_eliminar);
         helper=new DataBaseHWork(this);
         edtiddisponibilidad=(EditText)findViewById(R.id.editiddisponibilidad);
-        edtidlocal=(EditText)findViewById(R.id.editidlocal);
+       /* edtidlocal=(EditText)findViewById(R.id.editidlocal);
         edtidhorario=(EditText)findViewById(R.id.editidhorario);
-        edtidciclo=(EditText)findViewById(R.id.editidciclo);
+        edtidciclo=(EditText)findViewById(R.id.editidciclo);*/
 
     }
     public void eliminarDisponibilidadCiclo(View v){
         String regEliminadas;
         DisponibilidadCiclo dc=new DisponibilidadCiclo();
         dc.setIdDisponibilidad(Integer.valueOf(edtiddisponibilidad.getText().toString()));
-        dc.setIdLocal(Integer.valueOf(edtidlocal.getText().toString()));
+        /*dc.setIdLocal(edtidlocal.getText().toString());
         dc.setIdHorario(Integer.valueOf(edtidhorario.getText().toString()));
-        dc.setIdciclo(Integer.valueOf(edtidciclo.getText().toString()));
+        dc.setIdciclo(Integer.valueOf(edtidciclo.getText().toString()));*/
         helper.abrir();
         regEliminadas=helper.eliminar(dc);
         helper.cerrar();
@@ -43,9 +43,9 @@ DataBaseHWork helper;
 
     public void limpiar(View v){
         edtiddisponibilidad.setText("");
-        edtidlocal.setText("");
+      /*  edtidlocal.setText("");
         edtidhorario.setText("");
-        edtidciclo.setText("");
+        edtidciclo.setText("");*/
     }
 
 }

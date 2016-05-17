@@ -5,12 +5,12 @@ package work.tarea1.PrivetClass;
  */
 public class DisponibilidadCiclo {
     private int idDisponibilidad;
-    private int idLocal;
+    private String idLocal;
     private int idHorario;
     private int idciclo;
     private String disponibilidad;
 
-    public DisponibilidadCiclo(int idDisponibilidad, int idLocal, int idHorario, int idciclo, String disponibilidad) {
+    public DisponibilidadCiclo(int idDisponibilidad, String idLocal, int idHorario, int idciclo, String disponibilidad) {
         this.idDisponibilidad = idDisponibilidad;
         this.idLocal = idLocal;
         this.idHorario = idHorario;
@@ -26,11 +26,11 @@ public class DisponibilidadCiclo {
         this.idDisponibilidad = idDisponibilidad;
     }
 
-    public int getIdLocal() {
+    public String getIdLocal() {
         return idLocal;
     }
 
-    public void setIdLocal(int idLocal) {
+    public void setIdLocal(String idLocal) {
         this.idLocal = idLocal;
     }
 

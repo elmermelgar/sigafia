@@ -34,7 +34,7 @@ EditText edtdisponibilidad;
         String regInsertados;
         int iddisponibilidad=Integer.valueOf(edtidisponibilidad.getText().toString());
         int idhorario=Integer.valueOf(edtidhorario.getText().toString());
-        int idlocal=Integer.valueOf(edtidlocal.getText().toString());
+        String idlocal=edtidlocal.getText().toString();
         int idciclo=Integer.valueOf(edtidciclo.getText().toString());
         String disponibilidad=edtdisponibilidad.getText().toString();
         DisponibilidadCiclo disp=new DisponibilidadCiclo();
