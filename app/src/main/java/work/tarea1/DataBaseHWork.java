@@ -119,7 +119,7 @@ public class DataBaseHWork {
 
                 //Tablas Ciclo y DisponibilidadCiclo
                 db.execSQL("CREATE TABLE ciclo(idciclo INTEGER PRIMARY KEY NOT NULL,ciclo INTEGER);");
-                db.execSQL("CREATE TABLE disponibilidad_ciclo(idDisponibilidad INTEGER NOT NULL,idLocal INTEGER NOT NULL,idHorario INTEGER NOT NULL,idciclo INTEGER NOT NULL,disponibilidad Varchar(50),PRIMARY KEY(idDisponibilidad,idLocal,idHorario,idciclo));");
+                db.execSQL("CREATE TABLE disponibilidad_ciclo(idDisponibilidad INTEGER NOT NULL,idHorario INTEGER NOT NULL,idLocal VARCHAR2(10) NOT NULL,idciclo INTEGER NOT NULL,disponibilidad VARCHAR(50),PRIMARY KEY(idDisponibilidad));");
                 //Creacion de las tabla horario
                 db.execSQL("CREATE TABLE 'HORARIO'  ('IDHORARIO' INTEGER not null, 'HORA_INICIO' DATE, 'HORA_FIN' DATE, constraint PK_HORARIO primary key (IDHORARIO))");
 
@@ -189,6 +189,8 @@ public class DataBaseHWork {
 
                 db.execSQL("INSERT INTO tipoActividad(tipoActividad) values('Clase') ");
                 db.execSQL("INSERT INTO tipoActividad(tipoActividad) values('Discusión') ");
+                db.execSQL("INSERT INTO tipoActividad(tipoActividad) values('Laboratorio') ");
+                db.execSQL("INSERT INTO tipoActividad(tipoActividad) values('Taller') ");
                 db.execSQL("INSERT INTO tipoActividad(tipoActividad) values('Conferencia') ");
 
 
@@ -197,9 +199,9 @@ public class DataBaseHWork {
                 db.execSQL("INSERT INTO 'LOCAL' VALUES('B-11','Edificio B, FIA',99);");
 
 
-                db.execSQL("INSERT INTO 'Actividad' VALUES(1,1,'1','Clases de ciclo normales');");
-                db.execSQL("INSERT INTO 'Actividad' VALUES(2,1,'2','Discucion');");
-                db.execSQL("INSERT INTO 'Actividad' VALUES(3,2,'3','Ponencia');");
+                db.execSQL("INSERT INTO 'Actividad' VALUES(1,5,'lr12003','Python desde 0');");
+                db.execSQL("INSERT INTO 'Actividad' VALUES(2,1,'cm98001','Programacion III');");
+                //db.execSQL("INSERT INTO 'Actividad' VALUES(3,2,'3','Ponencia');");
 
                 db.execSQL("INSERT INTO 'tipoValoracion' VALUES(1,'Excelente','Entre 9 y 10');");
                 db.execSQL("INSERT INTO 'tipoValoracion' VALUES(2,'Muy Bueno','Entre 7 y 8');");
@@ -297,9 +299,9 @@ public class DataBaseHWork {
                 {
 //verificar que al modificar nota exista id disponibilidad,id local, id horario  y el id ciclo
                     DisponibilidadCiclo dc1 = (DisponibilidadCiclo)dato;
-                    String[] ids = {String.valueOf(dc1.getIdciclo()),String.valueOf(dc1.getIdLocal()),String.valueOf(dc1.getIdHorario()),String.valueOf(dc1.getIdciclo())};
+                    String[] ids = {String.valueOf(dc1.getIdDisponibilidad())};
                     abrir();
-                    Cursor c = db.query("disponibilidad_ciclo", null, "idDisponibilidad= ?  AND idHorario = ? AND idLocal = ? AND idciclo = ?", ids, null, null, null);
+                    Cursor c = db.query("disponibilidad_ciclo", null, "idDisponibilidad= ?", ids, null, null, null);
                     if(c.moveToFirst()){
 //Se encontraron datos
                         return true;
@@ -573,10 +575,11 @@ public class DataBaseHWork {
         long contador = 0;
         if (verificarIntegridad(disponibilidadCiclo, 5)) {
             ContentValues disp = new ContentValues();
-            disp.put("idDisponibilidad", disponibilidadCiclo.getDisponibilidad());
+            disp.put("idDisponibilidad", disponibilidadCiclo.getIdDisponibilidad());
             disp.put("idHorario", disponibilidadCiclo.getIdHorario());
-            disp.put("idciclo", disponibilidadCiclo.getIdciclo());
+
             disp.put("idLocal", disponibilidadCiclo.getIdLocal());
+            disp.put("idciclo", disponibilidadCiclo.getIdciclo());
             disp.put("disponibilidad", disponibilidadCiclo.getDisponibilidad());
             contador = db.insert("disponibilidad_ciclo", null, disp);
         }
@@ -589,14 +592,14 @@ public class DataBaseHWork {
     }
 
     //Consultar DisponibilidadCiclo
-    public DisponibilidadCiclo consultarDisponibilidad(String idDisponibilidad,String idHorario,String idLocal,String idciclo){
-        String[] id = {idDisponibilidad, idHorario,idLocal,idciclo};
-        Cursor cursor = db.query("disponibilidad_ciclo", camposDisponibilidadCiclo, "idDisponibilidad = ? AND idHorario = ? AND idLocal = ? AND idciclo = ?", id, null, null, null);
+    public DisponibilidadCiclo consultarDisponibilidad(String idDisponibilidad){
+        String[] id = {idDisponibilidad};
+        Cursor cursor = db.query("disponibilidad_ciclo", camposDisponibilidadCiclo, "idDisponibilidad = ? ", id, null, null, null);
         if(cursor.moveToFirst()){
             DisponibilidadCiclo disp=new DisponibilidadCiclo();
             disp.setIdDisponibilidad(cursor.getInt(0));
             disp.setIdHorario(cursor.getInt(1));
-            disp.setIdLocal(cursor.getInt(2));
+            disp.setIdLocal(cursor.getString(2));
             disp.setIdciclo(cursor.getInt(3));
             disp.setDisponibilidad(cursor.getString(4));
             return disp;
@@ -607,25 +610,34 @@ public class DataBaseHWork {
 
     //Eliminar DisponibilidadCiclo
     public String eliminar(DisponibilidadCiclo dc){
+        if(verificarIntegridad(dc,6)==true){
         String regAfectados="filas afectadas= ";
         int contador=0;
         String where="idDisponibilidad='"+String.valueOf(dc.getIdDisponibilidad())+"'";
-        where = where + " AND idHorario='"+String.valueOf(dc.getIdHorario())+"'";
-        where = where + " AND idLocal='"+String.valueOf(dc.getIdLocal())+"'";
-        where=where+" AND idciclo="+String.valueOf(dc.getIdciclo());
+
         contador+=db.delete("disponibilidad_ciclo", where, null);
         regAfectados+=contador;
         return regAfectados;
+        }
+        else {
+            return "No existe el registro";
+        }
     }
 
     //Actualizar DisponibilidadCiclo
     public String actualizar(DisponibilidadCiclo dc){
 
         if(verificarIntegridad(dc, 6)){
-            String[] id = {String.valueOf(dc.getIdDisponibilidad()),String.valueOf(dc.getIdLocal()),String.valueOf(dc.getIdHorario()),String.valueOf(dc.getIdciclo())};
+            String[] id = {String.valueOf(dc.getIdDisponibilidad())};
             ContentValues cv = new ContentValues();
+
+            cv.put("idHorario", dc.getIdHorario());
+
+            cv.put("idLocal", dc.getIdLocal());
+            cv.put("idciclo", dc.getIdciclo());
             cv.put("disponibilidad", dc.getDisponibilidad());
-            db.update("disponibilidad_ciclo", cv, "idDisponibilidad = ? AND idHorario = ? AND idLocal = ?  AND idciclo = ?", id);
+
+            db.update("disponibilidad_ciclo", cv, "idDisponibilidad = ?", id);
             return "Registro Actualizado Correctamente";
         }else{
             return "Registro no Existe";

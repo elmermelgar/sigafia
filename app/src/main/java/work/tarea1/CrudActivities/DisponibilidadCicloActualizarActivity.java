@@ -32,7 +32,7 @@ public class DisponibilidadCicloActualizarActivity extends Activity {
 public void actualizarDisponibilidadCiclo(View v){
     DisponibilidadCiclo dc = new DisponibilidadCiclo();
     dc.setIdDisponibilidad(Integer.valueOf(edtiddisp.getText().toString()));
-    dc.setIdLocal(Integer.valueOf(edtidlocal.getText().toString()));
+    dc.setIdLocal(edtidlocal.getText().toString());
     dc.setIdHorario(Integer.valueOf(edtidhorario.getText().toString()));
     dc.setIdciclo(Integer.valueOf(edtidciclo.getText().toString()));
     dc.setDisponibilidad(edtdisp.getText().toString());
