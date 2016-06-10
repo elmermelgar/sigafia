@@ -89,7 +89,9 @@ public class DataBaseHWork {
     }
 
     public Boolean existeUser(String user, String pass) {
+
         String[] camposLogin = new String[] {"idUusauro", "nombreUsuario", "clave"};
+
         String[] id = {user,pass};
         Cursor cursor = db.query("usuario", camposLogin, "nombreUsuario=? and clave =?", id, null, null, null);
         if (cursor.moveToFirst()) {
@@ -125,7 +127,7 @@ public class DataBaseHWork {
                 db.execSQL("CREATE TABLE 'TipoPersona'('codigo' VARCHAR(10) NOT NULL" + " PRIMARY KEY,'tipo_persona' VARCHAR(30),'descripcion' VARCHAR(150));");
 
                 //Tablas Actividad y TipoActividad
-                db.execSQL("CREATE TABLE 'Actividad'('id_actividad'INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,'id_tipo_actividad' INTEGER NOT NULL,'id_persona' VARCHAR(8) NOT NULL,'descripcion' VARCHAR(500));");
+                db.execSQL("CREATE TABLE 'Actividad'('id_actividad'INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,'id_tipo_actividad' INTEGER NOT NULL,'id_persona' VARCHAR(8) NOT NULL,'descripcion' VARCHAR(500), 'fecha' varchar(6) not null);");
                 db.execSQL("CREATE TABLE 'tipoActividad' ('idTipoActividad' INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL, 'tipoActividad' VARCHAR(50));" );
 
                 //Tablas Ciclo y DisponibilidadCiclo

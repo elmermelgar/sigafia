@@ -54,7 +54,7 @@ public class logIng extends AppCompatActivity {
         helper.cerrar();
         if(existe)
         {
-            Toast.makeText(this, "Bienbenido : " + usuario.getText().toString(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Bienvenido : " + usuario.getText().toString(), Toast.LENGTH_SHORT).show();
             Intent i = new Intent(this,MainActivity.class );
             startActivity(i);
 
