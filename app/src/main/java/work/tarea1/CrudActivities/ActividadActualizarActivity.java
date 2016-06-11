@@ -20,7 +20,7 @@ public class ActividadActualizarActivity extends AppCompatActivity implements Ad
     Spinner spPersonaResponsable;
     EditText editDescripcion;
     EditText editIdActividad;
-
+    EditText editFecha;
     String idPersonaResponsable;
     Integer idTipoActividad;
 
@@ -37,6 +37,7 @@ public class ActividadActualizarActivity extends AppCompatActivity implements Ad
         spPersonaResponsable.setOnItemSelectedListener(this);
         loadSpinnerData();
         editDescripcion=(EditText)findViewById(R.id.editDescripcion);
+        editFecha=(EditText)findViewById(R.id.editFecha);
     }
 
     @Override
@@ -78,9 +79,10 @@ public class ActividadActualizarActivity extends AppCompatActivity implements Ad
         Integer idTipoActividad=this.idTipoActividad;
         String idPersonaResponsable=this.idPersonaResponsable;
         String descripcion=editDescripcion.getText().toString();
+        String fecha=editFecha.getText().toString();
         Integer idAct=Integer.getInteger(idActividad);
         String regInsertados;
-        Actividad a=new Actividad(idActividad,idTipoActividad,idPersonaResponsable,descripcion);
+        Actividad a=new Actividad(idActividad,idTipoActividad,idPersonaResponsable,descripcion,fecha);
         helper.abrir();
         String estado=helper.actualizar(a);
         helper.cerrar();
@@ -92,6 +94,7 @@ public class ActividadActualizarActivity extends AppCompatActivity implements Ad
     public void limpiarTexto(View v) {
         editDescripcion.setText("");
         editIdActividad.setText("");
+        editFecha.setText("");
 
     }
 }

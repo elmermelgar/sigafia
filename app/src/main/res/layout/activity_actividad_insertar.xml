@@ -9,8 +9,8 @@
         <EditText
             android:id="@+id/editIdActividad"
             android:inputType="text"
-            android:enabled="false"
-            android:focusable="false"
+
+            android:focusable="true"
             android:maxLength="7"
              />
     </TableRow>
@@ -47,11 +47,33 @@
 
 
     </TableRow>
+    <TableRow>
+        <TextView android:text="@string/fecha" />
+
+
+        <EditText
+            android:id="@+id/editFecha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:gravity="top|left"
+            android:inputType="textMultiLine"
+            android:hint="ddMMYY"
+
+            android:maxLength="6" />
+
+
+
+
+    </TableRow>
 
     <TableRow>
         <Button
             android:onClick="insertarActividad"
             android:text="@string/insertar" />
+        <Button
+            android:onClick="insertarActividadHost"
+            android:text="@string/insertarHost" />
         <Button
             android:onClick="limpiarTexto"
             android:text="@string/limpiar" />
