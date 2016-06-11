@@ -1,5 +1,7 @@
 package work.tarea1.CrudActivities;
 
+import android.annotation.SuppressLint;
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,7 +13,9 @@ import android.widget.Toast;
 import work.tarea1.DataBaseHWork;
 import work.tarea1.PrivetClass.Actividad;
 import work.tarea1.R;
+import work.tarea1.ws.ControladorServicio;
 
+@SuppressLint("NewApi")
 public class ActividadInsertarActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
 
@@ -21,14 +25,25 @@ public class ActividadInsertarActivity extends AppCompatActivity implements Adap
     Spinner spPersonaResponsable;
     EditText editDescripcion;
     EditText editIdActividad;
+    EditText editFecha;
 
     String idPersonaResponsable;
     Integer idTipoActividad;
+
+
+
+    @SuppressLint("NewApi")
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_actividad_insertar);
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode. setThreadPolicy(policy);
+
         editIdActividad=(EditText)findViewById(R.id.editIdActividad);
+        editFecha=(EditText)findViewById(R.id.editFecha);
         helper=new DataBaseHWork(this);
         spTipoActividad=(Spinner)findViewById(R.id.spinner_tipo_actividad);
         spTipoActividad.setOnItemSelectedListener(this);
@@ -77,15 +92,16 @@ public class ActividadInsertarActivity extends AppCompatActivity implements Adap
 
 
 
+        String idActividad=editIdActividad.getText().toString();
         Integer idTipoActividad=this.idTipoActividad;
         String idPersonaResponsable=this.idPersonaResponsable;
         String descripcion=editDescripcion.getText().toString();
-
+        String fecha=editFecha.getText().toString();
         String regInsertados;
 
 
 
-        Actividad a=new Actividad(idTipoActividad,idPersonaResponsable,descripcion);
+        Actividad a=new Actividad(idActividad,idTipoActividad,idPersonaResponsable,descripcion,fecha);
         helper.abrir();
         regInsertados=helper.insertar(a);
 
@@ -95,9 +111,25 @@ public class ActividadInsertarActivity extends AppCompatActivity implements Adap
         Toast.makeText(this, "Exito al guardar", Toast.LENGTH_SHORT).show();
         //Toast.makeText(this, "Id. Actividad:"+, Toast.LENGTH_SHORT).show();
     }
-    public void limpiarTexto(View v) {
+
+    public void insertarActividadHost(View v){
+
+        String url="";
+        String idActividad=this.editIdActividad.getText().toString();
+        Integer idTipoActividad=this.idTipoActividad;
+        String idPersonaResponsable=this.idPersonaResponsable;
+        String descripcion=editDescripcion.getText().toString();
+        String fecha=editFecha.getText().toString();
+
+        url="http://grupo16pdm16.netne.net/ws_actividad_insertar.php?idactividad="+idActividad+"&idtipoactividad="+idTipoActividad+"&idpersona="+idPersonaResponsable+"&descripcion="+descripcion+"&fecha="+fecha;
+        ControladorServicio.insertarActividadPHP(url,this);
+        limpiarTexto();
+
+    }
+    public void limpiarTexto() {
         editDescripcion.setText("");
         editIdActividad.setText("");
+        editFecha.setText("");
 
     }
 }

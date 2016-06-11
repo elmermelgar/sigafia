@@ -8,27 +8,27 @@ public class Actividad {
     private Integer idActividad;
     private Integer idTipoActividad;
     private String idPersona;
+    private String descripcion;
+    private String fecha;
 
     private String idActividadString;
 
-    public Actividad(Integer idTipoActividad, String idPersona, String descripcion) {
+    public Actividad(Integer idActividad,Integer idTipoActividad, String idPersona, String descripcion,String fecha) {
 
+        this.idActividad=idActividad;
         this.idTipoActividad = idTipoActividad;
         this.idPersona = idPersona;
         this.descripcion = descripcion;
+        this.setFecha(fecha);
     }
 
-    public Actividad(Integer idActividad, Integer idTipoActividad, String idPersona, String descripcion) {
-        this.idActividad = idActividad;
-        this.idTipoActividad = idTipoActividad;
-        this.idPersona = idPersona;
-        this.descripcion = descripcion;
-    }
-    public Actividad(String idActividad, Integer idTipoActividad, String idPersona, String descripcion) {
+
+    public Actividad(String idActividad, Integer idTipoActividad, String idPersona, String descripcion, String fecha) {
         this.idActividadString = idActividad;
         this.idTipoActividad = idTipoActividad;
         this.idPersona = idPersona;
         this.descripcion = descripcion;
+        this.setFecha(fecha);
     }
 
     public Actividad() {
@@ -66,7 +66,7 @@ public class Actividad {
         this.idActividad = idActividad;
     }
 
-    private String descripcion;
+
 
     public String getIdActividadString() {
         return idActividadString;
@@ -74,5 +74,13 @@ public class Actividad {
 
     public void setIdActividadString(String idActividadString) {
         this.idActividadString = idActividadString;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 }

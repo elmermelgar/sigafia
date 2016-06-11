@@ -58,8 +58,8 @@ public class ControladorServicio {
         String respuesta = " ";
         try {
             HttpParams parametros = new BasicHttpParams();
-            HttpConnectionParams. setConnectionTimeout(parametros, 3000);
-            HttpConnectionParams. setSoTimeout(parametros, 5000);
+            HttpConnectionParams. setConnectionTimeout(parametros, 10000);
+            HttpConnectionParams. setSoTimeout(parametros, 50000);
             HttpClient cliente = new DefaultHttpClient(parametros);
             HttpPost httpPost = new HttpPost(url);
             httpPost.setHeader("content-type", "application/json");
@@ -85,4 +85,48 @@ public class ControladorServicio {
         }
         return respuesta;
     }
+
+    public static void insertarActividadPHP(String peticion, Context ctx) {
+        String json = obtenerRespuestaPeticion(peticion, ctx);
+
+
+
+        try {
+            Toast. makeText(ctx, "Registro ingresado",
+                    Toast. LENGTH_LONG).show();
+            JSONObject resultado = new JSONObject(json);
+
+            int respuesta = resultado.getInt("resultado");
+
+            if (respuesta == 1)
+                Toast. makeText(ctx, "Registro ingresado",
+                        Toast. LENGTH_LONG).show();
+            else
+                Toast. makeText(ctx, "Error registro duplicado",
+                        Toast. LENGTH_LONG).show();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void deleteActividadPHP(String peticion, Context ctx) {
+        String json = obtenerRespuestaPeticion(peticion, ctx);
+
+        try {
+            Toast. makeText(ctx, "Registro eliminado",
+                    Toast. LENGTH_LONG).show();
+            JSONObject resultado = new JSONObject(json);
+            int respuesta = resultado.getInt("resultado");
+            if (respuesta == 1)
+                Toast. makeText(ctx, "Registro eliminado",
+                        Toast. LENGTH_LONG).show();
+            else
+                Toast. makeText(ctx, "Error al eliminar registro",
+                        Toast. LENGTH_LONG).show();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }
