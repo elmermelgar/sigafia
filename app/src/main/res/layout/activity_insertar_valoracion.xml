@@ -73,7 +73,9 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignLeft="@+id/textView"
-        android:layout_alignStart="@+id/textView" />
+        android:layout_alignStart="@+id/textView"
+        android:focusable="true"
+        />
 
     <Spinner
         android:id="@+id/spinner_tipo_valoracion"
@@ -123,6 +125,16 @@
         android:layout_marginTop="75dp"
         android:onClick="insertarValoración"
         />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Insertar en Host"
+        android:id="@+id/button3"
+        android:onClick="insertarValoracionHost"
+        android:layout_alignTop="@+id/button2"
+        android:layout_toRightOf="@+id/textView3"
+        android:layout_toEndOf="@+id/textView3" />
 
     <Button
         style="?android:attr/buttonStyleSmall"

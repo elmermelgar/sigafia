@@ -90,7 +90,15 @@
         android:layout_marginTop="75dp"
         android:onClick="insertarTipoValoración"
         />
-
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Insertar en Host"
+        android:id="@+id/button3"
+        android:onClick="insertarTipoValoracionHost"
+        android:layout_alignTop="@+id/button2"
+        android:layout_toLeftOf="@+id/button2"
+        android:layout_toStartOf="@+id/button2" />
     <Button
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
