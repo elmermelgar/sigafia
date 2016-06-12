@@ -43,6 +43,11 @@
     </TableRow>
     <TableRow>
         <Button
+            android:onClick="actualizarDisponibilidadCicloHost"
+            android:text="@string/actualizarHost" />
+    </TableRow>
+    <TableRow>
+        <Button
             android:onClick="limpiarTexto"
             android:text="@string/limpiar" />
     </TableRow>
