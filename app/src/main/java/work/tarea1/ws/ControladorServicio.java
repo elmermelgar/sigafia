@@ -20,6 +20,10 @@ import android.util.Log;
 import android.widget.Toast;
 
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+
+import work.tarea1.PrivetClass.Valoracion;
 
 /**
  * Created by David-PC on 9/6/2016.
