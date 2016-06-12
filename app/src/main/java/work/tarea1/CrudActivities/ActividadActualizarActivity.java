@@ -9,6 +9,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 import work.tarea1.DataBaseHWork;
 import work.tarea1.PrivetClass.Actividad;
 import work.tarea1.R;
@@ -91,14 +94,16 @@ public class ActividadActualizarActivity extends AppCompatActivity implements Ad
         Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
     }
 
-    public void actualizarActividadHost(View v) {
+    public void actualizarActividadHost(View v) throws UnsupportedEncodingException {
+        String url="";
         String idActividad=this.editIdActividad.getText().toString();
         Integer idTipoActividad=this.idTipoActividad;
         String idPersonaResponsable=this.idPersonaResponsable;
         String descripcion=editDescripcion.getText().toString();
         String fecha=editFecha.getText().toString();
-        String url="http://grupo16pdm16.netne.net/ws_actividad_actualizar.php?idactividad="+idActividad+"&idtipoactividad="+idTipoActividad+"&idpersona="+idPersonaResponsable+"&descripcion="+descripcion+"&fecha="+fecha;
-        Log.v("URL:  ",url);
+
+        String params="idactividad=" + idActividad+"&idtipoactividad="+idTipoActividad+"&idpersona=" + idPersonaResponsable+"&descripcion="+descripcion+"&fecha="+fecha;
+        url = "http://grupo16pdm16.netne.net/ws_actividad_actualizar.php?"+params;
         ControladorServicio.actualizarActividadPHP(url, this);
     }
 

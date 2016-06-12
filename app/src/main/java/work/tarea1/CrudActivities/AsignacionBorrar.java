@@ -60,7 +60,6 @@ public class AsignacionBorrar extends AppCompatActivity {
     public void asignacionEliminarHost(View view) {
         String idAsignacion=this.editIdAsignacion.getText().toString();
         String url="http://grupo16pdm16.netne.net/ws_asignacion_eliminar.php?idasignacionlocal="+idAsignacion;
-        Log.v("URL:  ", url);
         ControladorServicio.eliminarAsignacionPHP(url, this);
     }
 }

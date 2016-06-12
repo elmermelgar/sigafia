@@ -19,12 +19,15 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.io.InputStream;
+
 /**
  * Created by David-PC on 9/6/2016.
  */
 public class ControladorServicio {
 
     public static String obtenerRespuestaPeticion(String url, Context ctx) {
+        Log.v("URL", url);
         String respuesta = " ";
         // Estableciendo tiempo de espera del servicio
         HttpParams parametros = new BasicHttpParams();
@@ -37,10 +40,11 @@ public class ControladorServicio {
             HttpResponse httpRespuesta = cliente.execute(httpGet);
             StatusLine estado = httpRespuesta.getStatusLine();
             int codigoEstado = estado.getStatusCode();
-            Log.v("codigo de estado:",String.valueOf(codigoEstado));
+            Log.v("codigo de estado",String.valueOf(codigoEstado));
             if (codigoEstado == 200) {
                 HttpEntity entidad = httpRespuesta.getEntity();
                 respuesta = EntityUtils.toString(entidad);
+                Log.v("Respuesta",respuesta);
             }
         } catch (Exception e) {
             Toast.makeText(ctx, "Error en la conexion",
@@ -108,7 +112,10 @@ public class ControladorServicio {
 
     public static void actualizarActividadPHP(String peticion, Context ctx) {
         String json = obtenerRespuestaPeticion(peticion, ctx);
+        Log.v("json",json);
         try {
+            Toast. makeText(ctx, "Registro actualizado en Host",
+                    Toast. LENGTH_LONG).show();
             JSONObject resultado = new JSONObject(json);
             int respuesta = resultado.getInt("resultado");
             if (respuesta == 1)
@@ -124,6 +131,8 @@ public class ControladorServicio {
     public static void eliminarAsignacionPHP(String peticion, Context ctx) {
         String json = obtenerRespuestaPeticion(peticion, ctx);
         try {
+            Toast. makeText(ctx, "Registro eliminado en Host",
+                    Toast. LENGTH_LONG).show();
             JSONObject resultado = new JSONObject(json);
             int respuesta = resultado.getInt("resultado");
             if (respuesta == 1)
