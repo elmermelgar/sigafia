@@ -11,9 +11,9 @@ import android.widget.ListView;
 public class valoracionMenu extends ListActivity {
 
     String[] menu={"Insertar Valoración" , "Eliminar Valoración" , "Consultar Valoración" ,
-            "Actualizar Valoración"};
+            "Actualizar Valoración", "Consultar Valoraciones HOST"};
     String[] activities={"InsertarValoracionActivity" , "EliminarValoracionActivity" , "ConsultarValoracionActivity" ,
-            "ActualizarValoracionActivity" };
+            "ActualizarValoracionActivity", "ValoracionConsultarHOSTActivity" };
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

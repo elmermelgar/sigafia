@@ -19,6 +19,11 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import work.tarea1.PrivetClass.Valoracion;
+
 /**
  * Created by David-PC on 9/6/2016.
  */
@@ -48,6 +53,7 @@ public class ControladorServicio {
             // Desplegando el error en el LogCat
             Log.v("Error de Conexion", e.toString());
         }
+        System.out.print("Paso Aqui"+respuesta);
         return respuesta;
     }
     public static String obtenerRespuestaPost(String url, JSONObject obj,
@@ -179,6 +185,27 @@ public class ControladorServicio {
                         Toast. LENGTH_LONG).show();
         } catch (JSONException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static List<Valoracion> obtenerValoracionesExterno(String json, Context ctx)
+    {
+        List<Valoracion> listaValoraciones = new ArrayList<Valoracion>();
+        try {
+            JSONArray valoracionesJSON = new JSONArray(json);
+            for (int i = 0; i < valoracionesJSON.length(); i++)
+            {
+                JSONObject obj = valoracionesJSON.getJSONObject(i);
+                Valoracion valoracion = new Valoracion();
+                valoracion.setIdAsignaciónLocal(obj.getInt("IDASIGNACIONLOCAL"));
+                valoracion.setIdPersona(obj.getString("IDPERSONA"));
+                valoracion.setDescripciónValoración("DESCRIPCION_VALORACION");
+                listaValoraciones.add(valoracion);
+            }
+            return listaValoraciones;
+        } catch (Exception e) {
+            Toast.makeText(ctx, "Error en parseo de JSON", Toast.LENGTH_LONG).show();
+            return null;
         }
     }
 

@@ -60,7 +60,8 @@ public class TipoValoracionInsertarActivity extends AppCompatActivity {
 
 
         url="http://grupo16pdm16.netne.net/ws_tipovaloracion_insertar.php?idtipovaloracion="+idTipoValoracion+"&tipovaloracion="+tipoValoracion+"&descripciontipovaloracion="+descripcionTipoValoracion+".";
-        ControladorServicio.insertarTipoValoracionPHP(url, this);
+        String urlX=url.replace(" ", "%20");
+        ControladorServicio.insertarTipoValoracionPHP(urlX, this);
         limpiarTexto();
 
     }
