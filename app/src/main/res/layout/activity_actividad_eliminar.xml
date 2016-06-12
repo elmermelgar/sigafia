@@ -13,9 +13,19 @@
         android:layout_height="wrap_content"
         android:inputType="text"
         android:maxLength="7"/>
+
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/eliminar"
+            android:onClick="eliminarActividad"/>
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/eliminar"
-        android:onClick="eliminarActividad"/>
+        android:text="@string/eliminarHost"
+        android:onClick="eliminarActividadHost"/>
+
+
+
 </LinearLayout>

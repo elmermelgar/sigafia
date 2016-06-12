@@ -25,6 +25,16 @@
         android:layout_marginEnd="67dp"
         android:onClick="borrarAsignacion" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Borrar en Host"
+        android:id="@+id/eliminarHost"
+        android:onClick="asignacionEliminarHost"
+        android:layout_below="@+id/idAsignacionInput"
+        android:layout_alignRight="@+id/Borrar"
+        android:layout_alignEnd="@+id/Borrar" />
+
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

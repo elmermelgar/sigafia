@@ -5,3 +5,5 @@
 .DS_Store
 /build
 /captures
+app/app.iml.rej
+app/src/main/AndroidManifest.xml.rej

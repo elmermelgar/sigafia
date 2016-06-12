@@ -127,7 +127,7 @@ public class DataBaseHWork {
                 db.execSQL("CREATE TABLE 'TipoPersona'('codigo' VARCHAR(10) NOT NULL" + " PRIMARY KEY,'tipo_persona' VARCHAR(30),'descripcion' VARCHAR(150));");
 
                 //Tablas Actividad y TipoActividad
-                db.execSQL("CREATE TABLE 'Actividad'('id_actividad'INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,'id_tipo_actividad' INTEGER NOT NULL,'id_persona' VARCHAR(8) NOT NULL,'descripcion' VARCHAR(500), 'fecha' varchar(6) not null);");
+                db.execSQL("CREATE TABLE 'Actividad'('id_actividad'INTEGER PRIMARY KEY NOT NULL,'id_tipo_actividad' INTEGER NOT NULL,'id_persona' VARCHAR(8) NOT NULL,'descripcion' VARCHAR(500), 'fecha' varchar(6) not null);");
                 db.execSQL("CREATE TABLE 'tipoActividad' ('idTipoActividad' INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL, 'tipoActividad' VARCHAR(50));" );
 
                 //Tablas Ciclo y DisponibilidadCiclo
@@ -229,13 +229,17 @@ public class DataBaseHWork {
                 db.execSQL("INSERT INTO 'LOCAL' VALUES('B-11','Edificio B, FIA',99);");
 
 
-                db.execSQL("INSERT INTO 'Actividad' VALUES(1,5,'lr12003','Python desde 0');");
-                db.execSQL("INSERT INTO 'Actividad' VALUES(2,1,'cm98001','Programacion III');");
+                db.execSQL("INSERT INTO 'Actividad' VALUES(1,5,'lr12003','Python desde 0','160616');");
+                db.execSQL("INSERT INTO 'Actividad' VALUES(2,1,'cm98001','Programacion III','150516');");
                 //db.execSQL("INSERT INTO 'Actividad' VALUES(3,2,'3','Ponencia');");
 
                 db.execSQL("INSERT INTO 'tipoValoracion' VALUES(1,'Excelente','Entre 9 y 10');");
                 db.execSQL("INSERT INTO 'tipoValoracion' VALUES(2,'Muy Bueno','Entre 7 y 8');");
                 db.execSQL("INSERT INTO 'tipoValoracion' VALUES(3,'Bueno','Entre 5 y 6');");
+
+                db.execSQL("INSERT INTO 'ASIGNACION_LOCALES' VALUES(1,1,'C-31');");
+                db.execSQL("INSERT INTO 'ASIGNACION_LOCALES' VALUES(2,2,'LIB-301');");
+                db.execSQL("INSERT INTO 'ASIGNACION_LOCALES' VALUES(3,2,'B-11');");
 
 
 
@@ -496,10 +500,11 @@ public class DataBaseHWork {
             Integer idActividad = null;
             long contador = 0;
             ContentValues alum = new ContentValues();
-            //alum.put("id_actividad", actividad.getIdActividad());
+            alum.put("id_actividad", actividad.getIdActividad());
             alum.put("id_tipo_actividad", actividad.getIdTipoActividad());
             alum.put("id_persona", actividad.getIdPersona());
             alum.put("descripcion", actividad.getDescripcion());
+            alum.put("fecha", actividad.getFecha());
 
             contador = db.insert("Actividad", null, alum);
             if (contador == -1 || contador == 0) {
@@ -511,7 +516,7 @@ public class DataBaseHWork {
                     idActividad = cursor.getInt(0);
 
             }
-            return idActividad.toString();
+            return regInsertados+""+idActividad.toString();
         }
 
         //Consultar Actividad
@@ -542,6 +547,7 @@ public class DataBaseHWork {
                 cv.put("id_tipo_actividad", actividad.getIdTipoActividad());
                 cv.put("id_persona", actividad.getIdPersona());
                 cv.put("descripcion", actividad.getDescripcion());
+                cv.put("fecha", actividad.getFecha());
 
                 db.update("Actividad", cv, "id_actividad = ?", id);
                 return "Registro Actualizado Correctamente";
