@@ -115,7 +115,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".CrudActivities.ActividadFilterFechaActivity" />
-        <activity android:name=".CrudActivities.ActividadFilterUserActivity"></activity>
+        <activity android:name=".CrudActivities.ActividadFilterUserActivity" />
+        <activity android:name=".CrudActivities.ValoracionConsultarHOSTActivity"></activity>
     </application>
 
 </manifest>
