@@ -2,6 +2,7 @@ package work.tarea1.CrudActivities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -91,20 +92,17 @@ public class ActividadActualizarActivity extends AppCompatActivity implements Ad
     }
 
     public void actualizarActividadHost(View v) {
-        String url="";
         String idActividad=this.editIdActividad.getText().toString();
         Integer idTipoActividad=this.idTipoActividad;
         String idPersonaResponsable=this.idPersonaResponsable;
         String descripcion=editDescripcion.getText().toString();
         String fecha=editFecha.getText().toString();
-
-        url="http://grupo16pdm16.netne.net/ws_actividad_actualizar.php?idactividad="+idActividad+"&idtipoactividad="+idTipoActividad+"&idpersona="+idPersonaResponsable+"&descripcion="+descripcion+"&fecha="+fecha;
-        System.out.println(url);
+        String url="http://grupo16pdm16.netne.net/ws_actividad_actualizar.php?idactividad="+idActividad+"&idtipoactividad="+idTipoActividad+"&idpersona="+idPersonaResponsable+"&descripcion="+descripcion+"&fecha="+fecha;
+        Log.v("URL:  ",url);
         ControladorServicio.actualizarActividadPHP(url, this);
-
     }
 
-    public void limpiarTexto() {
+    public void limpiarTexto(View v) {
         editDescripcion.setText("");
         editIdActividad.setText("");
         editFecha.setText("");
