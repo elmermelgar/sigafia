@@ -1,7 +1,7 @@
 package work.tarea1.CrudActivities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -9,8 +9,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import work.tarea1.R;
 import work.tarea1.DataBaseHWork;
+import work.tarea1.R;
 import work.tarea1.ws.ControladorServicio;
 
 public class AsignacionBorrar extends AppCompatActivity {
