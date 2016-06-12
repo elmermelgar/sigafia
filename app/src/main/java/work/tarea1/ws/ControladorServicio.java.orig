@@ -19,10 +19,14 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
 
 import work.tarea1.PrivetClass.Valoracion;
+=======
+import java.io.InputStream;
+>>>>>>> 23ca8fcdcde62940d090480455b6f8df183b2aa7
 
 /**
  * Created by David-PC on 9/6/2016.
@@ -55,6 +59,7 @@ public class ControladorServicio {
             // Desplegando el error en el LogCat
             Log.v("Error de Conexion", e.toString());
         }
+        System.out.print("Paso Aqui"+respuesta);
         return respuesta;
     }
     public static String obtenerRespuestaPost(String url, JSONObject obj,
@@ -115,7 +120,10 @@ public class ControladorServicio {
 
     public static void actualizarActividadPHP(String peticion, Context ctx) {
         String json = obtenerRespuestaPeticion(peticion, ctx);
+        Log.v("json",json);
         try {
+            Toast. makeText(ctx, "Registro actualizado en Host",
+                    Toast. LENGTH_LONG).show();
             JSONObject resultado = new JSONObject(json);
             int respuesta = resultado.getInt("resultado");
             if (respuesta == 1)
