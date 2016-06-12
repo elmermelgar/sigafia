@@ -1,9 +1,5 @@
 package work.tarea1.ws;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.StatusLine;
@@ -41,6 +37,7 @@ public class ControladorServicio {
             HttpResponse httpRespuesta = cliente.execute(httpGet);
             StatusLine estado = httpRespuesta.getStatusLine();
             int codigoEstado = estado.getStatusCode();
+            Log.v("codigo de estado:",String.valueOf(codigoEstado));
             if (codigoEstado == 200) {
                 HttpEntity entidad = httpRespuesta.getEntity();
                 respuesta = EntityUtils.toString(entidad);
@@ -65,7 +62,7 @@ public class ControladorServicio {
             httpPost.setHeader("content-type", "application/json");
             StringEntity nuevaEntidad = new StringEntity(obj.toString());
             httpPost.setEntity(nuevaEntidad);
-            Log.v("Peticion",url);
+            Log.v("Peticion", url);
             Log.v("POST", httpPost.toString());
             HttpResponse httpRespuesta = cliente.execute(httpPost);
             StatusLine estado = httpRespuesta.getStatusLine();
@@ -78,7 +75,7 @@ public class ControladorServicio {
                 Log. v("respuesta",Integer. toString(codigoEstado));
             }
         } catch (Exception e) {
-            Toast. makeText(ctx, "Error en la conexion", Toast. LENGTH_LONG)
+            Toast. makeText(ctx, "Error en la conexion", Toast.LENGTH_LONG)
                     .show();
             // Desplegando el error en el LogCat
             Log. v("Error de Conexion", e.toString());
@@ -111,18 +108,29 @@ public class ControladorServicio {
 
     public static void actualizarActividadPHP(String peticion, Context ctx) {
         String json = obtenerRespuestaPeticion(peticion, ctx);
-
         try {
-
             JSONObject resultado = new JSONObject(json);
-
             int respuesta = resultado.getInt("resultado");
-
             if (respuesta == 1)
                 Toast. makeText(ctx, "Registro actualizado",
                         Toast. LENGTH_LONG).show();
             else
                 Toast. makeText(ctx, "Error al actualizar el registro",
+                        Toast. LENGTH_LONG).show();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void eliminarAsignacionPHP(String peticion, Context ctx) {
+        String json = obtenerRespuestaPeticion(peticion, ctx);
+        try {
+            JSONObject resultado = new JSONObject(json);
+            int respuesta = resultado.getInt("resultado");
+            if (respuesta == 1)
+                Toast. makeText(ctx, "Registro eliminado",
+                        Toast. LENGTH_LONG).show();
+            else
+                Toast. makeText(ctx, "Error al eliminar el registro",
                         Toast. LENGTH_LONG).show();
         } catch (JSONException e) {
             e.printStackTrace();
@@ -146,6 +154,48 @@ public class ControladorServicio {
                         Toast. LENGTH_LONG).show();
             else
                 Toast. makeText(ctx, "Error registro duplicado",
+                        Toast. LENGTH_LONG).show();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void insertarDisponibilidadPHP(String peticion, Context ctx) {
+        String json = obtenerRespuestaPeticion(peticion, ctx);
+
+
+
+        try {
+            Toast. makeText(ctx, "Registro ingresado",
+                    Toast. LENGTH_LONG).show();
+            JSONObject resultado = new JSONObject(json.substring(0,json.lastIndexOf("}")+1));
+
+            int respuesta = resultado.getInt("resultado");
+
+            if (respuesta == 1)
+                Toast. makeText(ctx, "Registro ingresado",
+                        Toast. LENGTH_LONG).show();
+            else
+                Toast. makeText(ctx, "Error registro duplicado",
+                        Toast. LENGTH_LONG).show();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void actualizarDisponibilidadPHP(String peticion, Context ctx) {
+        String json = obtenerRespuestaPeticion(peticion, ctx);
+
+        try {
+
+            JSONObject resultado = new JSONObject(json.substring(0,json.lastIndexOf("}")+1));
+
+            int respuesta = resultado.getInt("resultado");
+
+            if (respuesta == 1)
+                Toast. makeText(ctx, "Registro actualizado",
+                        Toast. LENGTH_LONG).show();
+            else
+                Toast. makeText(ctx, "Error al actualizar el registro",
                         Toast. LENGTH_LONG).show();
         } catch (JSONException e) {
             e.printStackTrace();
