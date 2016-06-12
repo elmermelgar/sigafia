@@ -12,6 +12,33 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:inputType="text"/>
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/idlocal"/>
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edtidlocal"
+        android:inputType="text" />
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/idhorario"/>
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edtidhorario"
+        android:inputType="text" />
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/idciclo"/>
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edtidciclo"
+        android:inputType="text" />
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="fill_parent"
@@ -31,48 +58,7 @@
 
 
     </LinearLayout>
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="@string/idlocal"/>
-    <EditText
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/edtidlocal"
-        android:focusable="false"
-        android:enabled="false"
-        android:focusableInTouchMode="false"
-        android:inputType="text"
-        android:cursorVisible="false"
-        android:longClickable="false"/>
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="@string/idhorario"/>
-    <EditText
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/edtidhorario"
-        android:focusable="false"
-        android:enabled="false"
-        android:focusableInTouchMode="false"
-        android:inputType="text"
-        android:cursorVisible="false"
-        android:longClickable="false"/>
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="@string/idciclo"/>
-    <EditText
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/edtidciclo"
-        android:focusable="false"
-        android:enabled="false"
-        android:focusableInTouchMode="false"
-        android:inputType="text"
-        android:cursorVisible="false"
-        android:longClickable="false"/>
+
     <TextView
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"

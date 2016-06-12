@@ -159,6 +159,48 @@ public class ControladorServicio {
             e.printStackTrace();
         }
     }
+    public static void insertarDisponibilidadPHP(String peticion, Context ctx) {
+        String json = obtenerRespuestaPeticion(peticion, ctx);
+
+
+
+        try {
+            Toast. makeText(ctx, "Registro ingresado",
+                    Toast. LENGTH_LONG).show();
+            JSONObject resultado = new JSONObject(json.substring(0,json.lastIndexOf("}")+1));
+
+            int respuesta = resultado.getInt("resultado");
+
+            if (respuesta == 1)
+                Toast. makeText(ctx, "Registro ingresado",
+                        Toast. LENGTH_LONG).show();
+            else
+                Toast. makeText(ctx, "Error registro duplicado",
+                        Toast. LENGTH_LONG).show();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void actualizarDisponibilidadPHP(String peticion, Context ctx) {
+        String json = obtenerRespuestaPeticion(peticion, ctx);
+
+        try {
+
+            JSONObject resultado = new JSONObject(json.substring(0,json.lastIndexOf("}")+1));
+
+            int respuesta = resultado.getInt("resultado");
+
+            if (respuesta == 1)
+                Toast. makeText(ctx, "Registro actualizado",
+                        Toast. LENGTH_LONG).show();
+            else
+                Toast. makeText(ctx, "Error al actualizar el registro",
+                        Toast. LENGTH_LONG).show();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void deleteActividadPHP(String peticion, Context ctx) {
         String json = obtenerRespuestaPeticion(peticion, ctx);
