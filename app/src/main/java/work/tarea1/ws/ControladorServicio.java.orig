@@ -59,7 +59,6 @@ public class ControladorServicio {
             // Desplegando el error en el LogCat
             Log.v("Error de Conexion", e.toString());
         }
-        System.out.print("Paso Aqui"+respuesta);
         return respuesta;
     }
     public static String obtenerRespuestaPost(String url, JSONObject obj,

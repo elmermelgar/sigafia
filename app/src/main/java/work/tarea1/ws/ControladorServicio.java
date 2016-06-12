@@ -19,10 +19,7 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import work.tarea1.PrivetClass.Valoracion;
+import java.io.InputStream;
 
 /**
  * Created by David-PC on 9/6/2016.
@@ -115,7 +112,10 @@ public class ControladorServicio {
 
     public static void actualizarActividadPHP(String peticion, Context ctx) {
         String json = obtenerRespuestaPeticion(peticion, ctx);
+        Log.v("json",json);
         try {
+            Toast. makeText(ctx, "Registro actualizado en Host",
+                    Toast. LENGTH_LONG).show();
             JSONObject resultado = new JSONObject(json);
             int respuesta = resultado.getInt("resultado");
             if (respuesta == 1)
