@@ -27,13 +27,13 @@ import android.widget.Toast;
  * Created by David-PC on 9/6/2016.
  */
 public class ControladorServicio {
+
     public static String obtenerRespuestaPeticion(String url, Context ctx) {
         String respuesta = " ";
         // Estableciendo tiempo de espera del servicio
-
         HttpParams parametros = new BasicHttpParams();
-        HttpConnectionParams. setConnectionTimeout(parametros, 3000);
-        HttpConnectionParams. setSoTimeout(parametros, 5000);
+        HttpConnectionParams.setConnectionTimeout(parametros, 3000);
+        HttpConnectionParams.setSoTimeout(parametros, 5000);
         // Creando objetos de conexion
         HttpClient cliente = new DefaultHttpClient(parametros);
         HttpGet httpGet = new HttpGet(url);
@@ -43,13 +43,13 @@ public class ControladorServicio {
             int codigoEstado = estado.getStatusCode();
             if (codigoEstado == 200) {
                 HttpEntity entidad = httpRespuesta.getEntity();
-                respuesta = EntityUtils. toString(entidad);
+                respuesta = EntityUtils.toString(entidad);
             }
         } catch (Exception e) {
-            Toast. makeText(ctx, "Error en la conexion",
-                    Toast. LENGTH_LONG).show();
+            Toast.makeText(ctx, "Error en la conexion",
+                    Toast.LENGTH_LONG).show();
             // Desplegando el error en el LogCat
-            Log. v("Error de Conexion", e.toString());
+            Log.v("Error de Conexion", e.toString());
         }
         return respuesta;
     }
@@ -65,8 +65,8 @@ public class ControladorServicio {
             httpPost.setHeader("content-type", "application/json");
             StringEntity nuevaEntidad = new StringEntity(obj.toString());
             httpPost.setEntity(nuevaEntidad);
-            Log. v("Peticion",url);
-            Log. v("POST", httpPost.toString());
+            Log.v("Peticion",url);
+            Log.v("POST", httpPost.toString());
             HttpResponse httpRespuesta = cliente.execute(httpPost);
             StatusLine estado = httpRespuesta.getStatusLine();
             int codigoEstado = estado.getStatusCode();
@@ -103,6 +103,26 @@ public class ControladorServicio {
                         Toast. LENGTH_LONG).show();
             else
                 Toast. makeText(ctx, "Error registro duplicado",
+                        Toast. LENGTH_LONG).show();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void actualizarActividadPHP(String peticion, Context ctx) {
+        String json = obtenerRespuestaPeticion(peticion, ctx);
+
+        try {
+
+            JSONObject resultado = new JSONObject(json);
+
+            int respuesta = resultado.getInt("resultado");
+
+            if (respuesta == 1)
+                Toast. makeText(ctx, "Registro actualizado",
+                        Toast. LENGTH_LONG).show();
+            else
+                Toast. makeText(ctx, "Error al actualizar el registro",
                         Toast. LENGTH_LONG).show();
         } catch (JSONException e) {
             e.printStackTrace();

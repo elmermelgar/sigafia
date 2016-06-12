@@ -11,6 +11,7 @@ import android.widget.Toast;
 import work.tarea1.DataBaseHWork;
 import work.tarea1.PrivetClass.Actividad;
 import work.tarea1.R;
+import work.tarea1.ws.ControladorServicio;
 
 public class ActividadActualizarActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
@@ -87,14 +88,25 @@ public class ActividadActualizarActivity extends AppCompatActivity implements Ad
         String estado=helper.actualizar(a);
         helper.cerrar();
         Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
+    }
 
+    public void actualizarActividadHost(View v) {
+        String url="";
+        String idActividad=this.editIdActividad.getText().toString();
+        Integer idTipoActividad=this.idTipoActividad;
+        String idPersonaResponsable=this.idPersonaResponsable;
+        String descripcion=editDescripcion.getText().toString();
+        String fecha=editFecha.getText().toString();
 
+        url="http://grupo16pdm16.netne.net/ws_actividad_actualizar.php?idactividad="+idActividad+"&idtipoactividad="+idTipoActividad+"&idpersona="+idPersonaResponsable+"&descripcion="+descripcion+"&fecha="+fecha;
+        System.out.println(url);
+        ControladorServicio.actualizarActividadPHP(url, this);
 
-}
-    public void limpiarTexto(View v) {
+    }
+
+    public void limpiarTexto() {
         editDescripcion.setText("");
         editIdActividad.setText("");
         editFecha.setText("");
-
     }
 }

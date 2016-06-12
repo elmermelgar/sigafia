@@ -3,6 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
+    useLibrary 'org.apache.http.legacy'
     defaultConfig {
         applicationId "work.tarea1"
         minSdkVersion 14
@@ -10,7 +11,7 @@ android {
         versionCode 1
         versionName "1.0"
     }
-    useLibrary 'org.apache.http.legacy'
+
     buildTypes {
         release {
             minifyEnabled false

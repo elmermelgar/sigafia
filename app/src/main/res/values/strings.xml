@@ -67,6 +67,7 @@
     <string name="id_tipo_actividad">Tipo Actividad:</string>
     <string name="id_persona_responsable">Responsable:</string>
     <string name="fecha">Fecha:</string>
+    <string name="actualizarHost">Actualizar en Host</string>
     <string name="insertarHost">Insertar en Host</string>
     <string name="eliminarHost">Eliminar en Host</string>
 

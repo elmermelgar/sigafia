@@ -56,4 +56,8 @@ public class AsignacionBorrar extends AppCompatActivity {
         Toast.makeText(this, cont, Toast.LENGTH_SHORT).show();
 
     }
+    public void asignacionEliminarHost(View view) {
+
+
+    }
 }
