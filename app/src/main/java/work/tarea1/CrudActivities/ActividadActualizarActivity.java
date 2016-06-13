@@ -1,8 +1,7 @@
 package work.tarea1.CrudActivities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -74,7 +73,7 @@ public class ActividadActualizarActivity extends AppCompatActivity implements Ad
 
     private void loadSpinnerData(){
         spTipoActividad.setAdapter(helper.prepareSpinner(this,"tipoActividad", "tipoActividad", "idTipoActividad"));
-        spPersonaResponsable.setAdapter(helper.prepareSpinner(this,"Persona", "nombre", "id_persona"));
+        spPersonaResponsable.setAdapter(helper.prepareSpinner(this, "Persona", "nombre", "id_persona"));
     }
 
     public void actualizarActividad(View v) {
@@ -102,9 +101,10 @@ public class ActividadActualizarActivity extends AppCompatActivity implements Ad
         String descripcion=editDescripcion.getText().toString();
         String fecha=editFecha.getText().toString();
 
-        String params="idactividad=" + idActividad+"&idtipoactividad="+idTipoActividad+"&idpersona=" + idPersonaResponsable+"&descripcion="+descripcion+"&fecha="+fecha;
+        String params="idactividad=" + idActividad+"&idtipoactividad="+idTipoActividad+"&idpersona=" + idPersonaResponsable+"&descripcion="+URLEncoder.encode(descripcion,"UTF-8")+"&fecha="+fecha;
         url = "http://grupo16pdm16.netne.net/ws_actividad_actualizar.php?"+params;
         ControladorServicio.actualizarActividadPHP(url, this);
+
     }
 
     public void limpiarTexto(View v) {

@@ -31,6 +31,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import work.tarea1.PrivetClass.Actividad;
 import work.tarea1.PrivetClass.Valoracion;
 
 /**
@@ -67,38 +68,6 @@ public class ControladorServicio {
                     Toast. LENGTH_LONG).show();
             // Desplegando el error en el LogCat
             Log.v("Error de Conexion", e.toString());
-        }
-        return respuesta;
-    }
-    public static String obtenerRespuestaPost(String url, JSONObject obj,
-                                              Context ctx) {
-        String respuesta = " ";
-        try {
-            HttpParams parametros = new BasicHttpParams();
-            HttpConnectionParams. setConnectionTimeout(parametros, 10000);
-            HttpConnectionParams. setSoTimeout(parametros, 50000);
-            HttpClient cliente = new DefaultHttpClient(parametros);
-            HttpPost httpPost = new HttpPost(url);
-            httpPost.setHeader("content-type", "application/json");
-            StringEntity nuevaEntidad = new StringEntity(obj.toString());
-            httpPost.setEntity(nuevaEntidad);
-            Log.v("Peticion", url);
-            Log.v("POST", httpPost.toString());
-            HttpResponse httpRespuesta = cliente.execute(httpPost);
-            StatusLine estado = httpRespuesta.getStatusLine();
-            int codigoEstado = estado.getStatusCode();
-            if (codigoEstado == 200) {
-                respuesta = Integer. toString(codigoEstado);
-                Log. v("respuesta",respuesta);
-            }
-            else{
-                Log. v("respuesta",Integer. toString(codigoEstado));
-            }
-        } catch (Exception e) {
-            Toast. makeText(ctx, "Error en la conexion", Toast.LENGTH_LONG)
-                    .show();
-            // Desplegando el error en el LogCat
-            Log. v("Error de Conexion", e.toString());
         }
         return respuesta;
     }
@@ -156,12 +125,10 @@ public class ControladorServicio {
         String json = obtenerRespuestaPeticion(peticion, ctx);
         Log.v("json",json);
         try {
-            Toast. makeText(ctx, "Registro actualizado en Host",
-                    Toast. LENGTH_LONG).show();
-            JSONObject resultado = new JSONObject(json);
+            JSONObject resultado = new JSONObject(json.substring(0,json.lastIndexOf("}")+1));
             int respuesta = resultado.getInt("resultado");
             if (respuesta == 1)
-                Toast. makeText(ctx, "Registro actualizado",
+                Toast. makeText(ctx, "Registro actualizado en Host",
                         Toast. LENGTH_LONG).show();
             else
                 Toast. makeText(ctx, "Error al actualizar el registro",
@@ -173,12 +140,10 @@ public class ControladorServicio {
     public static void eliminarAsignacionPHP(String peticion, Context ctx) {
         String json = obtenerRespuestaPeticion(peticion, ctx);
         try {
-            Toast. makeText(ctx, "Registro eliminado en Host",
-                    Toast. LENGTH_LONG).show();
-            JSONObject resultado = new JSONObject(json);
+            JSONObject resultado = new JSONObject(json.substring(0,json.lastIndexOf("}")+1));
             int respuesta = resultado.getInt("resultado");
             if (respuesta == 1)
-                Toast. makeText(ctx, "Registro eliminado",
+                Toast. makeText(ctx, "Registro eliminado en Host",
                         Toast. LENGTH_LONG).show();
             else
                 Toast. makeText(ctx, "Error al eliminar el registro",
