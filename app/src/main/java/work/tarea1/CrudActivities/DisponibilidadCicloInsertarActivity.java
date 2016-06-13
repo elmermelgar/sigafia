@@ -61,7 +61,7 @@ public class DisponibilidadCicloInsertarActivity extends Activity {
         int idciclo=Integer.valueOf(edtidciclo.getText().toString());
         String disponibilidad=edtdisponibilidad.getText().toString();
 
-        url="http://grupo16pdm16.netne.net/ws_disponibilidad_ciclo_insertar.php?iddisponibilidad="+iddisponibilidad+"&idlocal="+ idlocal +"&idciclo="+idciclo+"&idhorario="+idhorario+"&disponibilidad="+disponibilidad+".";
+        url="http://grupo16pdm16.netne.net/ws_disponibilidad_ciclo_insertar.php?iddisponibilidad="+iddisponibilidad+"&idlocal="+ idlocal +"&idciclo="+idciclo+"&idhorario="+idhorario+"&disponibilidad="+disponibilidad;
         ControladorServicio.insertarDisponibilidadPHP(url, this);
     }
     public void limpiarTexto(View v) {

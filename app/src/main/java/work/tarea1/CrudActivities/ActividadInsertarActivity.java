@@ -12,6 +12,9 @@ import android.widget.Toast;
 
 import org.json.simple.parser.ParseException;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 import work.tarea1.DataBaseHWork;
 import work.tarea1.PrivetClass.Actividad;
 import work.tarea1.R;
@@ -114,7 +117,7 @@ public class ActividadInsertarActivity extends AppCompatActivity implements Adap
         //Toast.makeText(this, "Id. Actividad:"+, Toast.LENGTH_SHORT).show();
     }
 
-    public void insertarActividadHost(View v)  throws ParseException {
+    public void insertarActividadHost(View v) throws ParseException, UnsupportedEncodingException {
 
         String url="";
         String idActividad=this.editIdActividad.getText().toString();
@@ -123,7 +126,7 @@ public class ActividadInsertarActivity extends AppCompatActivity implements Adap
         String descripcion=editDescripcion.getText().toString();
         String fecha=editFecha.getText().toString();
 
-        url="http://grupo16pdm16.netne.net/ws_actividad_insertar.php?idactividad="+idActividad+"&idtipoactividad="+idTipoActividad+"&idpersona="+idPersonaResponsable+"&descripcion="+descripcion+"&fecha="+fecha;
+        url="http://grupo16pdm16.netne.net/ws_actividad_insertar.php?idactividad="+idActividad+"&idtipoactividad="+idTipoActividad+"&idpersona="+idPersonaResponsable+"&descripcion="+ URLEncoder.encode(descripcion, "UTF-8")+"&fecha="+fecha;
         ControladorServicio.insertarActividadPHP(url,this);
         limpiarTexto();
 
