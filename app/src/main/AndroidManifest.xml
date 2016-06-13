@@ -71,6 +71,7 @@
         <activity android:name=".CrudActivities.DisponibilidadCicloConsultarActivity" />
         <activity android:name=".CrudActivities.DisponibilidadCicloEliminarActivity" />
         <activity android:name=".CrudActivities.DisponibilidadCicloInsertarActivity" />
+        <activity android:name=".CrudActivities.ValoracionConsultarHOSTActivity" />
         <activity
             android:name=".CrudActivities.AsignacionBorrar"
             android:label="@string/title_activity_asignacion_borrar" />
@@ -89,6 +90,7 @@
         <activity
             android:name=".CrudActivities.HorarioActualizar"
             android:label="@string/title_activity_horario_actualizar" />
+
         <activity
             android:name=".CrudActivities.HorarioEliminar"
             android:label="@string/title_activity_horario_eliminar" />

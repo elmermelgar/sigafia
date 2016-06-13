@@ -1,5 +1,6 @@
 package work.tarea1.CrudActivities;
 
+import android.app.Activity;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,7 +17,7 @@ import work.tarea1.PrivetClass.Valoracion;
 import work.tarea1.R;
 import work.tarea1.ws.ControladorServicio;
 
-public class InsertarValoracionActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+public class InsertarValoracionActivity extends Activity implements AdapterView.OnItemSelectedListener{
 
     DataBaseHWork helper;
 
