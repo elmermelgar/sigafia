@@ -1,5 +1,6 @@
 package work.tarea1.CrudActivities;
 
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 import work.tarea1.DataBaseHWork;
 import work.tarea1.PrivetClass.Valoracion;
 import work.tarea1.R;
+import work.tarea1.ws.ControladorServicio;
 
 public class InsertarValoracionActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
@@ -31,6 +33,9 @@ public class InsertarValoracionActivity extends AppCompatActivity implements Ada
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insertar_valoracion);
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode. setThreadPolicy(policy);
 
         helper = new DataBaseHWork(this);
 
@@ -104,7 +109,23 @@ public class InsertarValoracionActivity extends AppCompatActivity implements Ada
         Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
     }
 
-    public void limpiarTexto(View v) {
+    public void insertarValoracionHost(View v){
+
+        String url="";
+        String idVal=idValoración.getText().toString();
+        String idTipoVal=this.idTipoValoración;
+        String idAsigLocal=this.idAsignacionLocal;
+        String idPer=this.idPersona;
+        String descrip=descripciónValoración.getText().toString();
+
+        url="http://grupo16pdm16.netne.net/ws_valoracion_insertar.php?idvaloracion="+idVal+"&idasignacionlocal="+idAsigLocal+"&idpersona="+idPer+"&descripcionvaloracion="+descrip+"&idtipovaloracion="+idTipoVal;
+        String urlX=url.replace(" ", "%20");
+        ControladorServicio.insertarTipoValoracionPHP(urlX, this);
+        limpiarTexto();
+
+    }
+
+    public void limpiarTexto() {
         idValoración.setText("");
 //        idPersona.setText("");
         descripciónValoración.setText("");

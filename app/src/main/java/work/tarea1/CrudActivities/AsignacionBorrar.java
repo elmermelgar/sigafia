@@ -1,20 +1,21 @@
 package work.tarea1.CrudActivities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import work.tarea1.R;
-import work.tarea1.PrivetClass.asignacion;
 import work.tarea1.DataBaseHWork;
+import work.tarea1.R;
+import work.tarea1.ws.ControladorServicio;
 
 public class AsignacionBorrar extends AppCompatActivity {
 
-    private EditText idAsignacion;
+    private EditText editIdAsignacion;
     private DataBaseHWork helper;
 
     @Override
@@ -23,7 +24,7 @@ public class AsignacionBorrar extends AppCompatActivity {
         setContentView(R.layout.activity_asignacion_borrar);
 
         helper = new DataBaseHWork(this);
-        idAsignacion = (EditText) findViewById(R.id.idAsignacionInput);
+        editIdAsignacion = (EditText) findViewById(R.id.idAsignacionInput);
     }
 
     @Override
@@ -51,9 +52,14 @@ public class AsignacionBorrar extends AppCompatActivity {
     public void borrarAsignacion(View view) {
         String cont;
         helper.abrir();
-        cont = helper.borrarAsignacion(idAsignacion.getText().toString());
+        cont = helper.borrarAsignacion(editIdAsignacion.getText().toString());
         helper.cerrar();
         Toast.makeText(this, cont, Toast.LENGTH_SHORT).show();
 
+    }
+    public void asignacionEliminarHost(View view) {
+        String idAsignacion=this.editIdAsignacion.getText().toString();
+        String url="http://grupo16pdm16.netne.net/ws_asignacion_eliminar.php?idasignacionlocal="+idAsignacion;
+        ControladorServicio.eliminarAsignacionPHP(url, this);
     }
 }

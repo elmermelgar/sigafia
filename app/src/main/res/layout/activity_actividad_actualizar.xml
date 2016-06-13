@@ -51,7 +51,7 @@
 
 
         <EditText
-            android:id="@+id/fecha"
+            android:id="@+id/editFecha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:lines="1"
@@ -70,6 +70,9 @@
         <Button
             android:onClick="actualizarActividad"
             android:text="@string/actualizar" />
+        <Button
+            android:onClick="actualizarActividadHost"
+            android:text="@string/actualizarHost" />
         <Button
             android:onClick="limpiarTexto"
             android:text="@string/limpiar" />

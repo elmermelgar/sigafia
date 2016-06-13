@@ -2,15 +2,20 @@ package work.tarea1.CrudActivities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 import work.tarea1.DataBaseHWork;
 import work.tarea1.PrivetClass.Actividad;
 import work.tarea1.R;
+import work.tarea1.ws.ControladorServicio;
 
 public class ActividadActualizarActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
@@ -87,14 +92,24 @@ public class ActividadActualizarActivity extends AppCompatActivity implements Ad
         String estado=helper.actualizar(a);
         helper.cerrar();
         Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
+    }
 
+    public void actualizarActividadHost(View v) throws UnsupportedEncodingException {
+        String url="";
+        String idActividad=this.editIdActividad.getText().toString();
+        Integer idTipoActividad=this.idTipoActividad;
+        String idPersonaResponsable=this.idPersonaResponsable;
+        String descripcion=editDescripcion.getText().toString();
+        String fecha=editFecha.getText().toString();
 
+        String params="idactividad=" + idActividad+"&idtipoactividad="+idTipoActividad+"&idpersona=" + idPersonaResponsable+"&descripcion="+descripcion+"&fecha="+fecha;
+        url = "http://grupo16pdm16.netne.net/ws_actividad_actualizar.php?"+params;
+        ControladorServicio.actualizarActividadPHP(url, this);
+    }
 
-}
     public void limpiarTexto(View v) {
         editDescripcion.setText("");
         editIdActividad.setText("");
         editFecha.setText("");
-
     }
 }

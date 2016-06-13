@@ -237,6 +237,10 @@ public class DataBaseHWork {
                 db.execSQL("INSERT INTO 'tipoValoracion' VALUES(2,'Muy Bueno','Entre 7 y 8');");
                 db.execSQL("INSERT INTO 'tipoValoracion' VALUES(3,'Bueno','Entre 5 y 6');");
 
+                db.execSQL("INSERT INTO 'ASIGNACION_LOCALES' VALUES(1,1,'C-31');");
+                db.execSQL("INSERT INTO 'ASIGNACION_LOCALES' VALUES(2,2,'LIB-301');");
+                db.execSQL("INSERT INTO 'ASIGNACION_LOCALES' VALUES(3,2,'B-11');");
+
 
 
 

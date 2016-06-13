@@ -11,9 +11,9 @@ import android.widget.ListView;
 public class asignacionMenu extends ListActivity {
 
     String[] menu={"Insertar Asignacion" , "Eliminar Asinacion" , "Consultar Asignacion" ,
-            "Actualizar Asignacion"};
+            "Actualizar Asignacion","Resumen de Asignaciones WS","Direccion Asignacion WS"};
     String[] activities = {"AsignacionInsertarActivity", "AsignacionBorrar", "AsignacionConsultarActivity",
-            "AsignacionMoficar"};
+            "AsignacionMoficar","webAsignacionAcitivdad","webasignacionHorarios"};
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,9 +28,17 @@ public class asignacionMenu extends ListActivity {
         String nombreValue=activities[position];
         l.getChildAt(position).setBackgroundColor(Color. rgb(128, 128, 255));
         try{
-            Class<?> clase=Class. forName("work.tarea1.CrudActivities."+nombreValue);
-            Intent inte = new Intent(this,clase);
-            this.startActivity(inte);
+            if (position <4) {
+                Class<?> clase = Class.forName("work.tarea1.CrudActivities." + nombreValue);
+
+                Intent inte = new Intent(this,clase);
+                this.startActivity(inte);
+            } else{
+                Class<?> clase = Class.forName("work.tarea1.webService." + nombreValue);
+                Intent inte = new Intent(this,clase);
+                this.startActivity(inte);
+            }
+
         }catch(ClassNotFoundException e){
             e.printStackTrace();
         }
