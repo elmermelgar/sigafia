@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import org.json.simple.parser.ParseException;
+
 import work.tarea1.DataBaseHWork;
 import work.tarea1.PrivetClass.Actividad;
 import work.tarea1.R;
@@ -112,7 +114,7 @@ public class ActividadInsertarActivity extends AppCompatActivity implements Adap
         //Toast.makeText(this, "Id. Actividad:"+, Toast.LENGTH_SHORT).show();
     }
 
-    public void insertarActividadHost(View v){
+    public void insertarActividadHost(View v)  throws ParseException {
 
         String url="";
         String idActividad=this.editIdActividad.getText().toString();

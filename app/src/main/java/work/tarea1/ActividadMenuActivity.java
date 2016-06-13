@@ -14,10 +14,10 @@ import work.tarea1.R;
 public class ActividadMenuActivity extends ListActivity {
 
     String[] menu={"Insertar Actividad" , "Consultar Actividad" , "Actualizar Actividad" ,
-            "Eliminar Actividad"};
+            "Eliminar Actividad","Consultar por fecha"};
     String[]
             activities={"ActividadInsertarActivity" , "ActividadConsultarActivity", "ActividadActualizarActivity" ,
-            "ActividadEliminarActivity" };
+            "ActividadEliminarActivity","ActividadFilterFechaActivity" };
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
